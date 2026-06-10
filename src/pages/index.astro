@@ -42,6 +42,12 @@ const LOGIN = "https://app.ottoedu.com.ar/login";
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;0,14..32,900&display=swap" rel="stylesheet" />
     <style>
+      /* Evita scroll/desborde horizontal en mobile (blobs y formas decorativas) */
+      html, body {
+        max-width: 100%;
+        overflow-x: hidden;
+      }
+
       /* Animaciones de entrada */
       .fade-up {
         opacity: 0;
@@ -129,7 +135,7 @@ const LOGIN = "https://app.ottoedu.com.ar/login";
         animation: fillBar 1.4s cubic-bezier(0.16,1,0.3,1) 0.6s both;
       }
 
-      /* Gradient mesh hero */
+      /* Gradient mesh hero (legacy light) */
       .hero-bg {
         background-color: #f0f7ff;
         background-image:
@@ -137,6 +143,45 @@ const LOGIN = "https://app.ottoedu.com.ar/login";
           radial-gradient(ellipse 50% 50% at 5% 90%, rgba(140,44,230,0.09) 0%, transparent 60%),
           radial-gradient(ellipse 40% 40% at 50% 100%, rgba(16,185,129,0.05) 0%, transparent 70%);
       }
+
+      /* Hero oscuro estilo Luca — fondo azul profundo con brillos de marca */
+      .hero-dark {
+        background-color: #14215c;
+        background-image:
+          radial-gradient(ellipse 60% 70% at 80% 0%, rgba(14,165,233,0.45) 0%, transparent 60%),
+          radial-gradient(ellipse 55% 60% at 10% 100%, rgba(140,44,230,0.40) 0%, transparent 60%),
+          linear-gradient(160deg, #1E3A8A 0%, #14215c 55%, #0c1640 100%);
+      }
+      /* Curva blanca inferior que separa el hero del resto (como Luca) */
+      .hero-wave {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -1px;
+        width: 100%;
+        height: clamp(40px, 6vw, 90px);
+        display: block;
+        pointer-events: none;
+      }
+      /* Variante superior: la curva del color claro entra sobre la banda oscura */
+      .hero-wave-top {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: -1px;
+        width: 100%;
+        height: clamp(40px, 6vw, 90px);
+        display: block;
+        pointer-events: none;
+        z-index: 1;
+      }
+      /* Formas geométricas decorativas flotando */
+      @keyframes floatShape {
+        0%, 100% { transform: translateY(0) rotate(0deg); }
+        50%      { transform: translateY(-16px) rotate(8deg); }
+      }
+      .float-shape { animation: floatShape 9s ease-in-out infinite; }
+      .float-shape-slow { animation: floatShape 13s ease-in-out infinite reverse; }
 
       /* Card glass effect */
       .glass-card {
@@ -283,6 +328,30 @@ const LOGIN = "https://app.ottoedu.com.ar/login";
         background: linear-gradient(90deg, #8C2CE6, #0369A1);
       }
 
+      /* ===== Estilo Luca: formas geométricas decorativas por sección ===== */
+      .shape { position: absolute; pointer-events: none; z-index: 0; opacity: 0.9; }
+      .shape-ring { border-radius: 9999px; border-style: solid; background: transparent; }
+      .shape-dot  { border-radius: 9999px; }
+      .shape-sq   { border-radius: 6px; }
+      /* Las secciones con formas deben recortar el overflow y apilar contenido encima */
+      .has-shapes { position: relative; overflow: hidden; }
+      .has-shapes > .max-w-6xl,
+      .has-shapes > .max-w-5xl,
+      .has-shapes > .max-w-4xl,
+      .has-shapes > .max-w-3xl { position: relative; z-index: 1; }
+      @media (max-width: 640px) { .shape { display: none; } }
+
+      /* Eyebrow estilo Luca: punto + pill, sin la línea inferior */
+      .eyebrow-dot::before {
+        content: '';
+        display: inline-block;
+        width: 6px; height: 6px;
+        border-radius: 9999px;
+        background: currentColor;
+        margin-right: 7px;
+        vertical-align: middle;
+      }
+
       /* FAQ accordion */
       .faq-item summary::-webkit-details-marker { display: none; }
       .faq-item summary { outline: none; }
@@ -316,15 +385,16 @@ const LOGIN = "https://app.ottoedu.com.ar/login";
           </span>
           <span class="text-[10px] text-gray-400 font-medium hidden sm:block tracking-wide border-l border-gray-200 pl-2.5">Para escuelas primarias · Provincia de Buenos Aires</span>
         </a>
-        <div class="flex items-center gap-2">
+        <div class="flex items-center gap-1 sm:gap-2 flex-shrink-0">
           <a href={LOGIN}
-            class="text-sm font-medium text-gray-600 hover:text-[#0369A1] transition-colors px-4 py-2 rounded-lg hover:bg-gray-50">
+            class="text-[13px] sm:text-sm font-medium text-gray-600 hover:text-[#0369A1] transition-colors px-2.5 sm:px-4 py-2 rounded-full hover:bg-gray-50 whitespace-nowrap">
             Iniciar sesión
           </a>
           <a href={WA}
-            class="btn-primary group flex items-center gap-1.5 px-4 py-2.5 bg-[#0369A1] text-white text-sm font-semibold rounded-xl shadow-sm hover:shadow-lg hover:shadow-[#0369A1]/25 hover:-translate-y-0.5 transition-all duration-300">
-            Agendá una demo
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 bounce-arrow" viewBox="0 0 20 20" fill="currentColor">
+            class="btn-primary group inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-2.5 bg-[#0369A1] text-white text-[13px] sm:text-sm font-semibold rounded-full shadow-sm hover:shadow-lg hover:shadow-[#0369A1]/25 hover:-translate-y-0.5 transition-all duration-300 whitespace-nowrap">
+            <span class="sm:hidden">Demo</span>
+            <span class="hidden sm:inline">Agendá una demo</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 bounce-arrow flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
               <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
             </svg>
           </a>
@@ -332,78 +402,85 @@ const LOGIN = "https://app.ottoedu.com.ar/login";
       </nav>
     </header>
 
-    <!-- ===== HERO — Mensaje principal: la sustitución del gasto familiar ===== -->
-    <section class="hero-bg relative overflow-hidden pt-7 pb-10 md:pt-9 md:pb-12 lg:py-[clamp(2rem,4vh,3.5rem)]">
-      <!-- Decorative elements -->
-      <div class="absolute inset-0 dot-grid pointer-events-none"></div>
-      <div class="float-blob absolute top-0 right-0 w-[620px] h-[620px] bg-[#0369A1]/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4 pointer-events-none"></div>
-      <div class="float-blob-slow absolute bottom-0 left-0 w-96 h-96 bg-[#8C2CE6]/10 rounded-full blur-3xl translate-y-1/3 -translate-x-1/4 pointer-events-none"></div>
-      <div class="float-blob absolute top-1/3 left-1/2 w-72 h-72 bg-[#10B981]/8 rounded-full blur-3xl pointer-events-none"></div>
+    <!-- ===== HERO — estilo Luca: fondo oscuro, titular centrado, mock-up debajo ===== -->
+    <section class="hero-dark relative overflow-hidden pt-12 pb-24 md:pt-16 md:pb-28 lg:pt-[clamp(3rem,5vh,4.5rem)]">
+      <!-- Patrón de puntos sutil -->
+      <div class="absolute inset-0 dot-grid-light opacity-50 pointer-events-none"></div>
+      <!-- Brillos de marca -->
+      <div class="float-blob absolute top-0 right-0 w-[620px] h-[620px] bg-[#0ea5e9]/25 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4 pointer-events-none"></div>
+      <div class="float-blob-slow absolute bottom-1/4 left-0 w-96 h-96 bg-[#8C2CE6]/25 rounded-full blur-3xl -translate-x-1/3 pointer-events-none"></div>
 
-      <div class="relative max-w-6xl mx-auto px-4 sm:px-6 grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
-        <!-- Texto -->
-        <div>
-          <span class="fade-up inline-flex items-center gap-2 px-3.5 py-1.5 bg-white/90 backdrop-blur rounded-full border border-[#0369A1]/15 text-xs font-semibold text-[#1E3A8A] mb-5 shadow-sm shadow-[#0369A1]/5">
-            <span class="pulse-dot w-2 h-2 rounded-full bg-[#10B981] inline-block flex-shrink-0"></span>
-            Seleccionamos pocas escuelas por zona · Ciclo 2026
+      <!-- Formas geométricas flotando (estilo Luca) -->
+      <div class="float-shape absolute top-[18%] left-[8%] w-5 h-5 rounded-md bg-[#10B981]/70 rotate-12 pointer-events-none hidden sm:block"></div>
+      <div class="float-shape-slow absolute top-[30%] right-[10%] w-7 h-7 rounded-full border-2 border-[#0ea5e9]/60 pointer-events-none hidden sm:block"></div>
+      <div class="float-shape absolute top-[12%] right-[22%] w-3 h-3 rounded-full bg-[#fbbf24]/80 pointer-events-none hidden md:block" style="animation-delay:1.5s;"></div>
+      <div class="float-shape-slow absolute bottom-[34%] left-[16%] w-4 h-4 rounded-sm bg-[#8C2CE6]/60 rotate-45 pointer-events-none hidden md:block"></div>
+
+      <div class="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
+        <span class="fade-up inline-flex items-center gap-2 px-3.5 py-1.5 bg-white/10 backdrop-blur rounded-full border border-white/20 text-xs font-semibold text-white/90 mb-6 ring-1 ring-white/5">
+          <span class="pulse-dot w-2 h-2 rounded-full bg-[#10B981] inline-block flex-shrink-0"></span>
+          Seleccionamos pocas escuelas por zona · Ciclo 2026
+        </span>
+
+        <h1 class="fade-up delay-1 text-[clamp(2rem,1.3rem+3vw,3.4rem)] font-extrabold text-white leading-[1.08] tracking-tight mb-5">
+          El refuerzo escolar que vive
+          <span class="relative inline-block">
+            <span class="bg-gradient-to-r from-[#7dd3fc] via-[#a78bfa] to-[#6ee7b7] bg-clip-text text-transparent">adentro de tu escuela</span>
           </span>
+        </h1>
 
-          <h1 class="fade-up delay-1 text-[clamp(1.6rem,1.1rem+1.7vw,2.4rem)] font-extrabold text-gray-900 leading-[1.12] tracking-tight mb-2.5">
-            Las familias de tu escuela ya pagan
-            <span class="text-[#EF4444] strike-line" id="strike-target">$80.000–$150.000 por mes</span> en particulares.
-          </h1>
-          <h2 class="fade-up delay-2 text-[clamp(1.15rem,0.9rem+1vw,1.5rem)] font-extrabold leading-snug mb-3.5">
-            <span class="text-gradient">OTTO lo trae adentro de la escuela</span>, por una fracción de lo que ya pagan.
-          </h2>
+        <p class="fade-up delay-2 text-[clamp(1rem,0.9rem+0.5vw,1.2rem)] text-blue-100/90 leading-relaxed max-w-2xl mx-auto mb-3">
+          Las familias de tu escuela ya pagan <span class="font-semibold text-white">$80.000–$150.000 por mes</span> en particulares. OTTO trae ese refuerzo adentro del aula, alineado al Diseño Curricular de la DGCyE, por una fracción de lo que ya pagan.
+        </p>
+        <p class="fade-up delay-2 text-sm text-blue-200/70 max-w-xl mx-auto mb-8">
+          La docente elige una actividad y la proyecta o la asigna en un clic; los chicos practican jugando; la escuela le muestra a cada familia cómo avanza su hijo.
+        </p>
 
-          <p class="fade-up delay-3 text-sm sm:text-[15px] text-gray-500 leading-relaxed mb-4">
-            Plataforma web de refuerzo de Matemática y Prácticas del Lenguaje para primer ciclo, <strong class="text-gray-800 font-semibold">alineada al Diseño Curricular de la DGCyE</strong>. Tus docentes eligen una actividad y la proyectan en el pizarrón o la asignan en un clic, los chicos practican jugando, y la escuela puede mostrarle a cada familia cómo avanza su hijo. Algo que ninguna otra escuela de tu zona ofrece todavía.
-          </p>
-
-          <!-- Stats -->
-          <div class="fade-up delay-4 grid grid-cols-3 gap-2.5 mb-4">
-            {[
-              { v: "1° a 3°", l: "Refuerzo de primer ciclo" },
-              { v: "9", l: "Tipos de actividad interactiva" },
-              { v: "DGCyE", l: "Alineado al Diseño Curricular" },
-            ].map(({ v, l }) => (
-              <div class="rounded-2xl bg-white/70 backdrop-blur border border-white/80 shadow-sm px-3.5 py-2.5 lift">
-                <p class="text-lg sm:text-xl font-extrabold text-gradient tracking-tight">{v}</p>
-                <p class="text-[11px] text-gray-500 mt-0.5 leading-snug">{l}</p>
-              </div>
-            ))}
-          </div>
-
-          <div class="fade-up delay-5 flex flex-col sm:flex-row gap-3">
-            <a href={WA_DEMO}
-              class="btn-primary group flex items-center justify-center gap-2 px-6 py-3 bg-[#0369A1] text-white font-bold rounded-2xl shadow-lg shadow-[#0369A1]/25 hover:shadow-xl hover:shadow-[#0369A1]/30 hover:-translate-y-0.5 transition-all duration-300 text-[15px]">
-              Agendá una demo
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 transition-transform group-hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-              </svg>
-            </a>
-            <a href={MAIL_GMAIL} target="_blank" rel="noopener noreferrer"
-              class="group flex items-center justify-center gap-2 px-6 py-3 border border-gray-300 bg-white/60 backdrop-blur text-gray-700 font-semibold rounded-2xl hover:bg-white hover:border-[#0369A1]/40 hover:text-[#0369A1] transition-all duration-300 text-[15px]">
-              <svg class="w-4 h-4 text-gray-400 group-hover:text-[#0369A1] transition-colors" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
-                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
-              </svg>
-              Escribinos por mail
-            </a>
-          </div>
-          <p class="fade-up delay-5 text-xs text-gray-400 mt-3">Sin prueba gratis · Cláusula de salida las primeras 3 semanas de agosto, sin cargo ni penalidad. La demo no compromete a nada.</p>
+        <div class="fade-up delay-3 flex flex-col sm:flex-row gap-3 justify-center items-center mb-8">
+          <a href={WA_DEMO}
+            class="btn-primary group flex items-center justify-center gap-2 px-7 py-3.5 bg-white text-[#1E3A8A] font-bold rounded-full shadow-2xl shadow-black/20 hover:scale-[1.03] hover:-translate-y-0.5 transition-all duration-300 text-base">
+            Agendá una demo
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 transition-transform group-hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
+          </a>
+          <a href={MAIL_GMAIL} target="_blank" rel="noopener noreferrer"
+            class="group flex items-center justify-center gap-2 px-7 py-3.5 bg-white/10 backdrop-blur ring-1 ring-white/25 text-white font-semibold rounded-full hover:bg-white/20 hover:-translate-y-0.5 transition-all duration-300 text-base">
+            <svg class="w-4 h-4 text-white/80 group-hover:text-white transition-colors" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+              <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+            </svg>
+            Escribinos por mail
+          </a>
         </div>
 
-        <!-- Card flotante mock-up — vista del docente / clase -->
-        <div class="fade-in delay-3 flex justify-center">
-          <div class="relative w-full max-w-sm">
-            <!-- halo glow behind card -->
-            <div class="absolute -inset-6 bg-gradient-to-tr from-[#0369A1]/20 via-[#8C2CE6]/15 to-[#10B981]/15 blur-2xl rounded-[2rem] pointer-events-none"></div>
+        <!-- Chips de confianza -->
+        <div class="fade-up delay-4 flex flex-wrap justify-center gap-2.5 mb-12">
+          {[
+            "1° a 3° · Primer ciclo",
+            "9 tipos de actividad",
+            "Alineado a la DGCyE",
+          ].map((c) => (
+            <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/15 text-xs font-medium text-white/85">
+              <svg class="w-3 h-3 text-[#6ee7b7]" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              {c}
+            </span>
+          ))}
+        </div>
 
-            <div class="float-card glass-card relative rounded-3xl shadow-2xl shadow-[#1E3A8A]/15 ring-1 ring-white/60 p-6 w-full">
+        <!-- Mock-up de clase centrado (estilo Luca: visual debajo del titular) -->
+        <div class="fade-in delay-3 relative flex justify-center">
+          <!-- Mascota asomando detrás del card -->
+          <img src="/pet.png" alt="OTTO, el búho mascota de la plataforma educativa" width="96" height="96" loading="eager" decoding="async" class="breathe absolute -top-12 -right-2 sm:right-8 w-20 h-20 sm:w-24 sm:h-24 object-contain drop-shadow-2xl z-20 hidden sm:block" />
+
+          <div class="relative w-full max-w-md">
+            <!-- halo glow detrás del card -->
+            <div class="absolute -inset-6 bg-gradient-to-tr from-[#0ea5e9]/30 via-[#8C2CE6]/25 to-[#10B981]/25 blur-2xl rounded-[2rem] pointer-events-none"></div>
+
+            <div class="float-card glass-card relative rounded-3xl shadow-2xl shadow-black/30 ring-1 ring-white/60 p-6 w-full text-left">
               <div class="flex items-center gap-3 mb-5">
                 <div class="w-11 h-11 rounded-xl bg-[#0369A1]/8 flex items-center justify-center overflow-hidden">
-                  <img src="/pet.png" alt="OTTO, el búho mascota de la plataforma educativa" width="40" height="40" loading="eager" decoding="async" class="w-9 h-9 object-contain breathe" />
+                  <img src="/buho-1.png" alt="" width="40" height="40" loading="eager" decoding="async" class="w-9 h-9 object-contain" />
                 </div>
                 <div class="flex-1 min-w-0">
                   <p class="font-semibold text-gray-900 text-sm">Clase · 1° A</p>
@@ -443,11 +520,13 @@ const LOGIN = "https://app.ottoedu.com.ar/login";
             </div>
           </div>
         </div>
+
+        <p class="fade-up delay-5 text-xs text-blue-200/60 mt-8">Sin prueba gratis · Cláusula de salida las primeras 3 semanas de agosto, sin cargo ni penalidad. La demo no compromete a nada.</p>
       </div>
     </section>
 
     <!-- ===== TRUST BAR — tranquilizadores institucionales / pre-objeciones ===== -->
-    <div class="relative bg-gradient-to-r from-[#1E3A8A] via-[#0369A1] to-[#1E3A8A] py-6 overflow-hidden">
+    <div class="relative bg-gradient-to-r from-[#1E3A8A] via-[#0369A1] to-[#1E3A8A] pt-6 pb-16 overflow-hidden">
       <div class="absolute inset-0 dot-grid-light opacity-60 pointer-events-none"></div>
       <div class="relative max-w-5xl mx-auto px-4 sm:px-6">
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-4 text-center">
@@ -466,13 +545,20 @@ const LOGIN = "https://app.ottoedu.com.ar/login";
           ))}
         </div>
       </div>
+      <!-- Curva blanca que cierra el bloque azul (hero + trust bar) -->
+      <svg class="hero-wave" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0,48 C240,90 480,90 720,64 C960,38 1200,12 1440,40 L1440,90 L0,90 Z" fill="#ffffff"></path>
+      </svg>
     </div>
 
     <!-- ===== PROBLEMA 1: el gasto familiar que ya existe (sustitución) ===== -->
-    <section class="py-12 md:py-16 bg-white">
+    <section class="has-shapes py-12 md:py-16 bg-white">
+      <span class="shape shape-sq float-shape w-9 h-9 bg-[#0369A1]/8 top-16 left-[6%] rotate-12"></span>
+      <span class="shape shape-ring float-shape-slow w-14 h-14 border-[3px] border-[#8C2CE6]/12 bottom-20 right-[7%]"></span>
+      <span class="shape shape-dot float-shape w-3 h-3 bg-[#10B981]/30 top-1/2 left-[3%]"></span>
       <div class="max-w-5xl mx-auto px-4 sm:px-6">
         <div class="text-center mb-8">
-          <span class="fade-up eyebrow-line inline-block px-3.5 py-1 bg-red-50 text-red-500 text-xs font-bold rounded-full mb-4 tracking-widest uppercase">
+          <span class="fade-up eyebrow-dot inline-flex items-center px-4 py-1.5 bg-red-50 text-red-500 text-xs font-bold rounded-full mb-4 tracking-widest uppercase">
             El gasto que ya existe
           </span>
           <h2 class="fade-up text-2xl sm:text-[2rem] font-extrabold text-gray-900 tracking-tight mb-3 max-w-3xl mx-auto leading-tight">
@@ -536,7 +622,7 @@ const LOGIN = "https://app.ottoedu.com.ar/login";
               ))}
             </ul>
             <a href={WA_FAMILIAS}
-              class="btn-primary group mt-7 w-full flex items-center justify-center gap-2 py-3 bg-[#0369A1] text-white font-bold rounded-2xl shadow-lg shadow-[#0369A1]/20 hover:-translate-y-0.5 hover:shadow-xl transition-all duration-300 text-sm">
+              class="btn-primary group mt-7 w-full flex items-center justify-center gap-2 py-3 bg-[#0369A1] text-white font-bold rounded-full shadow-lg shadow-[#0369A1]/20 hover:-translate-y-0.5 hover:shadow-xl transition-all duration-300 text-sm">
               Quiero verlo en una demo
               <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
             </a>
@@ -546,10 +632,12 @@ const LOGIN = "https://app.ottoedu.com.ar/login";
     </section>
 
     <!-- ===== PROBLEMA 2: el docente arma todo desde cero ===== -->
-    <section class="py-11 md:py-14 bg-white">
+    <section class="has-shapes py-11 md:py-14 bg-white">
+      <span class="shape shape-ring float-shape-slow w-16 h-16 border-[3px] border-[#10B981]/12 top-12 right-[6%]"></span>
+      <span class="shape shape-dot float-shape w-2.5 h-2.5 bg-[#8C2CE6]/30 bottom-16 left-[8%]"></span>
       <div class="max-w-6xl mx-auto px-4 sm:px-6 grid md:grid-cols-2 gap-10 items-center">
         <div>
-          <span class="fade-up eyebrow-line-left inline-block px-3.5 py-1 bg-purple-50 text-[#8C2CE6] text-xs font-bold rounded-full mb-4 tracking-widest uppercase">
+          <span class="fade-up eyebrow-dot inline-flex items-center px-4 py-1.5 bg-purple-50 text-[#8C2CE6] text-xs font-bold rounded-full mb-4 tracking-widest uppercase">
             Para tus docentes de primer ciclo
           </span>
           <h2 class="fade-up text-2xl sm:text-[2rem] font-extrabold text-gray-900 tracking-tight mb-4 leading-tight">
@@ -612,10 +700,13 @@ const LOGIN = "https://app.ottoedu.com.ar/login";
     </section>
 
     <!-- ===== CÓMO FUNCIONA / PRODUCTO — con honestidad de cobertura ===== -->
-    <section class="py-11 md:py-14 section-alt">
+    <section class="has-shapes py-11 md:py-14 section-alt">
+      <span class="shape shape-sq float-shape w-10 h-10 bg-[#0ea5e9]/8 top-20 right-[5%] rotate-12"></span>
+      <span class="shape shape-ring float-shape-slow w-12 h-12 border-[3px] border-[#8C2CE6]/12 bottom-24 left-[5%]"></span>
+      <span class="shape shape-dot float-shape w-3 h-3 bg-[#10B981]/30 top-1/3 right-[12%]"></span>
       <div class="max-w-6xl mx-auto px-4 sm:px-6">
         <div class="text-center mb-7">
-          <span class="fade-up eyebrow-line inline-block px-3.5 py-1 bg-[#0369A1]/8 text-[#0369A1] text-xs font-bold rounded-full mb-4 tracking-widest uppercase">
+          <span class="fade-up eyebrow-dot inline-flex items-center px-4 py-1.5 bg-[#0369A1]/8 text-[#0369A1] text-xs font-bold rounded-full mb-4 tracking-widest uppercase">
             Lo que ninguna app global te da
           </span>
           <h2 class="fade-up text-2xl sm:text-[2rem] font-extrabold text-gray-900 tracking-tight mb-3 max-w-3xl mx-auto leading-tight">
@@ -654,10 +745,13 @@ const LOGIN = "https://app.ottoedu.com.ar/login";
     </section>
 
     <!-- ===== POR QUÉ AHORA — las 3 fuerzas de mercado (why-now) ===== -->
-    <section class="py-11 md:py-14 section-alt">
+    <section class="has-shapes py-11 md:py-14 section-alt">
+      <span class="shape shape-ring float-shape-slow w-16 h-16 border-[3px] border-[#0369A1]/12 top-16 left-[6%]"></span>
+      <span class="shape shape-sq float-shape w-8 h-8 bg-[#8C2CE6]/10 bottom-28 right-[8%] rotate-45"></span>
+      <span class="shape shape-dot float-shape-slow w-3 h-3 bg-[#0ea5e9]/30 top-1/2 right-[4%]"></span>
       <div class="max-w-6xl mx-auto px-4 sm:px-6">
         <div class="text-center mb-7">
-          <span class="fade-up eyebrow-line inline-block px-3.5 py-1 bg-[#8C2CE6]/10 text-[#8C2CE6] text-xs font-bold rounded-full mb-4 tracking-widest uppercase">
+          <span class="fade-up eyebrow-dot inline-flex items-center px-4 py-1.5 bg-[#8C2CE6]/10 text-[#8C2CE6] text-xs font-bold rounded-full mb-4 tracking-widest uppercase">
             Por qué ahora
           </span>
           <h2 class="fade-up text-2xl sm:text-[2rem] font-extrabold text-gray-900 tracking-tight mb-2">
@@ -707,10 +801,12 @@ const LOGIN = "https://app.ottoedu.com.ar/login";
     </section>
 
     <!-- ===== VS CLASSROOM / CONTINUEMOS ESTUDIANDO ===== -->
-    <section class="py-11 md:py-14 bg-white">
+    <section class="has-shapes py-11 md:py-14 bg-white">
+      <span class="shape shape-dot float-shape w-3 h-3 bg-[#0369A1]/25 top-20 left-[7%]"></span>
+      <span class="shape shape-ring float-shape-slow w-14 h-14 border-[3px] border-[#10B981]/12 bottom-16 right-[6%]"></span>
       <div class="max-w-4xl mx-auto px-4 sm:px-6">
         <div class="text-center mb-8">
-          <span class="fade-up eyebrow-line inline-block px-3.5 py-1 bg-gray-100 text-gray-500 text-xs font-bold rounded-full mb-4 tracking-widest uppercase">
+          <span class="fade-up eyebrow-dot inline-flex items-center px-4 py-1.5 bg-gray-100 text-gray-500 text-xs font-bold rounded-full mb-4 tracking-widest uppercase">
             Comparación honesta
           </span>
           <h2 class="fade-up text-2xl sm:text-[2rem] font-extrabold text-gray-900 tracking-tight mb-3 leading-tight">
@@ -761,10 +857,12 @@ const LOGIN = "https://app.ottoedu.com.ar/login";
     </section>
 
     <!-- ===== FAQ — lo que va a preguntar la comisión directiva ===== -->
-    <section class="py-11 md:py-14 section-alt">
+    <section class="has-shapes py-11 md:py-14 section-alt">
+      <span class="shape shape-sq float-shape w-9 h-9 bg-[#8C2CE6]/8 top-20 left-[6%] rotate-12"></span>
+      <span class="shape shape-dot float-shape-slow w-3 h-3 bg-[#0ea5e9]/30 bottom-24 right-[7%]"></span>
       <div class="max-w-3xl mx-auto px-4 sm:px-6">
         <div class="text-center mb-7">
-          <span class="fade-up eyebrow-line inline-block px-3.5 py-1 bg-[#0369A1]/8 text-[#0369A1] text-xs font-bold rounded-full mb-4 tracking-widest uppercase">
+          <span class="fade-up eyebrow-dot inline-flex items-center px-4 py-1.5 bg-[#0369A1]/8 text-[#0369A1] text-xs font-bold rounded-full mb-4 tracking-widest uppercase">
             Preparate para la comisión
           </span>
           <h2 class="fade-up text-2xl sm:text-[2rem] font-extrabold text-gray-900 tracking-tight">
@@ -794,7 +892,7 @@ const LOGIN = "https://app.ottoedu.com.ar/login";
         </div>
         <div class="fade-up text-center mt-10">
           <a href={WA_COMISION}
-            class="btn-primary group inline-flex items-center gap-2 px-7 py-3.5 bg-[#0369A1] text-white font-bold rounded-2xl shadow-lg shadow-[#0369A1]/25 hover:-translate-y-0.5 hover:shadow-xl transition-all duration-300 text-base">
+            class="btn-primary group inline-flex items-center gap-2 px-7 py-3.5 bg-[#0369A1] text-white font-bold rounded-full shadow-lg shadow-[#0369A1]/25 hover:-translate-y-0.5 hover:shadow-xl transition-all duration-300 text-base">
             Pedí el material para presentar a la comisión
             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 transition-transform group-hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
           </a>
@@ -803,19 +901,27 @@ const LOGIN = "https://app.ottoedu.com.ar/login";
     </section>
 
     <!-- ===== CTA FINAL — cierre con fecha ===== -->
-    <section class="py-14 md:py-20 relative overflow-hidden bg-gradient-to-br from-[#1E3A8A] via-[#0369A1] to-[#1E3A8A]">
+    <section class="py-16 md:py-24 relative overflow-hidden hero-dark">
+      <!-- Curva superior que conecta con la sección clara anterior (FAQ) -->
+      <svg class="hero-wave-top" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0,42 C240,12 480,12 720,30 C960,48 1200,80 1440,46 L1440,0 L0,0 Z" fill="#f8faff"></path>
+      </svg>
       <div class="absolute inset-0 dot-grid-light opacity-50 pointer-events-none"></div>
       <div class="absolute inset-0 pointer-events-none">
         <div class="float-blob absolute top-0 right-0 w-[520px] h-[520px] bg-[#0ea5e9]/25 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4"></div>
         <div class="float-blob-slow absolute bottom-0 left-0 w-96 h-96 bg-[#8C2CE6]/25 rounded-full blur-3xl translate-y-1/3 -translate-x-1/4"></div>
       </div>
+      <!-- Formas geométricas flotando (estilo Luca) -->
+      <span class="shape shape-sq float-shape w-6 h-6 bg-[#10B981]/60 top-[18%] left-[10%] rotate-12 hidden sm:block"></span>
+      <span class="shape shape-ring float-shape-slow w-9 h-9 border-2 border-[#7dd3fc]/50 top-[24%] right-[12%] hidden sm:block"></span>
+      <span class="shape shape-dot float-shape w-3.5 h-3.5 bg-[#fbbf24]/70 bottom-[22%] left-[16%] hidden md:block"></span>
       <div class="relative max-w-3xl mx-auto px-4 sm:px-6 text-center">
         <div class="fade-up flex justify-center mb-5">
           <div class="w-16 h-16 rounded-2xl bg-white/10 backdrop-blur ring-1 ring-white/20 flex items-center justify-center">
             <img src="/pet.png" alt="OTTO" class="w-11 h-11 object-contain breathe" onerror="this.style.display='none'" />
           </div>
         </div>
-        <span class="fade-up inline-block px-3.5 py-1 bg-white/10 backdrop-blur text-white/80 text-xs font-bold rounded-full mb-5 tracking-widest uppercase ring-1 ring-white/15">
+        <span class="fade-up eyebrow-dot inline-flex items-center px-4 py-1.5 bg-white/10 backdrop-blur text-white/80 text-xs font-bold rounded-full mb-5 tracking-widest uppercase ring-1 ring-white/15">
           Cupos por zona · Ciclo 2026
         </span>
         <h2 class="fade-up text-3xl sm:text-[2.6rem] font-extrabold text-white mb-4 leading-[1.08] tracking-tight">
@@ -826,14 +932,14 @@ const LOGIN = "https://app.ottoedu.com.ar/login";
         </p>
         <div class="fade-up flex flex-col sm:flex-row gap-4 justify-center items-center">
           <a href={WA_DEMO}
-            class="btn-primary group flex items-center gap-3 px-8 py-4 bg-white text-[#1E3A8A] font-bold rounded-2xl text-base shadow-2xl shadow-black/20 hover:scale-[1.03] hover:-translate-y-0.5 transition-all duration-300">
+            class="btn-primary group flex items-center gap-3 px-8 py-4 bg-white text-[#1E3A8A] font-bold rounded-full text-base shadow-2xl shadow-black/20 hover:scale-[1.03] hover:-translate-y-0.5 transition-all duration-300">
             <svg class="w-5 h-5 flex-shrink-0 text-[#25D366]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
             </svg>
             Agendá tu demo por WhatsApp
           </a>
           <a href={MAIL_GMAIL} target="_blank" rel="noopener noreferrer"
-            class="group flex items-center gap-2.5 px-7 py-4 bg-white/10 backdrop-blur ring-1 ring-white/25 text-white font-semibold rounded-2xl text-base hover:bg-white/20 hover:-translate-y-0.5 transition-all duration-300">
+            class="group flex items-center gap-2.5 px-7 py-4 bg-white/10 backdrop-blur ring-1 ring-white/25 text-white font-semibold rounded-full text-base hover:bg-white/20 hover:-translate-y-0.5 transition-all duration-300">
             <svg class="w-5 h-5 flex-shrink-0 text-white/80 group-hover:text-white transition-colors" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
               <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
               <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
