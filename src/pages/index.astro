@@ -1,5 +1,15 @@
 ---
 import '../styles/global.css';
+
+// CTA endpoints — únicos destinos de acción en toda la página
+const WA = "https://wa.me/5493329325672";
+const WA_DEMO = "https://wa.me/5493329325672?text=Hola,%20soy%20director/a%20de%20una%20escuela%20y%20quiero%20agendar%20una%20demo%20de%20OTTO";
+const WA_FAMILIAS = "https://wa.me/5493329325672?text=Hola,%20soy%20director/a%20y%20quiero%20ver%20c%C3%B3mo%20funciona%20OTTO%20en%20mi%20escuela";
+const WA_DOCENTE = "https://wa.me/5493329325672?text=Hola,%20quiero%20ver%20la%20vista%20del%20docente%20de%20OTTO";
+const WA_FUNDADORA = "https://wa.me/5493329325672?text=Hola,%20me%20interesa%20el%20beneficio%20Escuela%20Fundadora%20de%20OTTO";
+const WA_COMISION = "https://wa.me/5493329325672?text=Hola,%20quiero%20el%20material%20de%20OTTO%20para%20presentar%20a%20la%20comisi%C3%B3n%20directiva";
+const MAIL = "mailto:contacto@ottoedu.com.ar";
+const LOGIN = "https://app.ottoedu.com.ar/login";
 ---
 
 <html lang="es">
@@ -8,21 +18,21 @@ import '../styles/global.css';
     <link rel="icon" type="image/png" href="/pet.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
-    <title>OTTO — Refuerzo escolar online alineado al currículo de Buenos Aires</title>
-    <meta name="description" content="¿Cansado de pagar clases particulares? OTTO es la plataforma de refuerzo escolar online para 1° a 3° grado, 100% alineada al Diseño Curricular de Buenos Aires. Actividades gamificadas, adaptativas y con seguimiento para padres." />
-    <meta name="keywords" content="refuerzo escolar online primaria, clases particulares alternativa Buenos Aires, actividades educativas online niños, app educativa primaria Argentina, ejercicios matemática 2do grado, diseño curricular la Provian de Buenos Aires" />
+    <title>OTTO — Refuerzo escolar institucional para escuelas primarias · DGCyE</title>
+    <meta name="description" content="Licencia institucional de refuerzo de lectoescritura y matemática para 1° a 3° grado, alineada al Diseño Curricular de la DGCyE. La docente elige y asigna en un clic; los chicos practican jugando. Para escuelas privadas de la Provincia de Buenos Aires." />
+    <meta name="keywords" content="licencia institucional refuerzo escolar, plataforma educativa escuelas primarias Provincia de Buenos Aires, DGCyE primer ciclo, alternativa a clases particulares para colegios, panel docente tipo Classroom, lectoescritura primer ciclo" />
     <link rel="canonical" href="https://www.ottoedu.com.ar/" />
     <!-- Open Graph (WhatsApp, Facebook, LinkedIn) -->
-    <meta property="og:title" content="OTTO — Refuerzo escolar online para primaria" />
-    <meta property="og:description" content="Actividades gamificadas alineadas al Diseño Curricular de Buenos Aires. Sin clases particulares, sin turnos." />
+    <meta property="og:title" content="OTTO — Refuerzo escolar institucional para escuelas primarias" />
+    <meta property="og:description" content="Licencia institucional alineada al Diseño Curricular de la DGCyE. La docente elige y asigna en un clic; los chicos practican jugando. Provincia de Buenos Aires." />
     <meta property="og:image" content="https://ottoedu.com.ar/og-image.png" />
     <meta property="og:url" content="https://ottoedu.com.ar" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="es_AR" />
     <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="OTTO — Refuerzo escolar online para primaria" />
-    <meta name="twitter:description" content="Actividades gamificadas alineadas al Diseño Curricular de Buenos Aires." />
+    <meta name="twitter:title" content="OTTO — Refuerzo escolar institucional para escuelas primarias" />
+    <meta name="twitter:description" content="Licencia institucional alineada al Diseño Curricular de la DGCyE. Para escuelas privadas de la Provincia de Buenos Aires." />
     <meta name="twitter:image" content="https://ottoedu.com.ar/og-image.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -119,8 +129,9 @@ import '../styles/global.css';
       .hero-bg {
         background-color: #f0f7ff;
         background-image:
-          radial-gradient(ellipse 70% 60% at 90% 10%, rgba(3,105,161,0.10) 0%, transparent 70%),
-          radial-gradient(ellipse 50% 50% at 5% 90%, rgba(140,44,230,0.07) 0%, transparent 60%);
+          radial-gradient(ellipse 70% 60% at 90% 10%, rgba(3,105,161,0.12) 0%, transparent 70%),
+          radial-gradient(ellipse 50% 50% at 5% 90%, rgba(140,44,230,0.09) 0%, transparent 60%),
+          radial-gradient(ellipse 40% 40% at 50% 100%, rgba(16,185,129,0.05) 0%, transparent 70%);
       }
 
       /* Card glass effect */
@@ -134,28 +145,181 @@ import '../styles/global.css';
       .section-alt {
         background-color: #f8faff;
       }
+
+      /* ===== Visual polish toolkit ===== */
+
+      /* Decorative dot grid (hero + dark CTA backdrops) */
+      .dot-grid {
+        background-image: radial-gradient(rgba(3,105,161,0.13) 1px, transparent 1px);
+        background-size: 22px 22px;
+        -webkit-mask-image: radial-gradient(ellipse 60% 60% at 50% 40%, #000 30%, transparent 75%);
+        mask-image: radial-gradient(ellipse 60% 60% at 50% 40%, #000 30%, transparent 75%);
+      }
+      .dot-grid-light {
+        background-image: radial-gradient(rgba(255,255,255,0.14) 1px, transparent 1px);
+        background-size: 24px 24px;
+      }
+
+      /* Gradient text (headlines / brand accents) */
+      .text-gradient {
+        background: linear-gradient(110deg, #0369A1 0%, #1E3A8A 45%, #8C2CE6 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        color: transparent;
+      }
+
+      /* Animated shimmer sweep over a surface */
+      @keyframes shimmer {
+        0%   { transform: translateX(-150%) skewX(-12deg); }
+        100% { transform: translateX(250%) skewX(-12deg); }
+      }
+      .shimmer { position: relative; overflow: hidden; }
+      .shimmer::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.28), transparent);
+        transform: translateX(-150%) skewX(-12deg);
+        pointer-events: none;
+      }
+      .shimmer:hover::after { animation: shimmer 0.9s ease; }
+
+      /* Soft glow ring used on the highlighted price / founder card */
+      @keyframes glowPulse {
+        0%, 100% { box-shadow: 0 0 0 0 rgba(3,105,161,0.20), 0 18px 40px -18px rgba(3,105,161,0.45); }
+        50%      { box-shadow: 0 0 0 6px rgba(3,105,161,0.07), 0 22px 48px -16px rgba(3,105,161,0.55); }
+      }
+      .glow-card { animation: glowPulse 3.6s ease-in-out infinite; }
+
+      /* Gradient border wrapper (1px stroke that picks up brand hues) */
+      .gradient-border {
+        position: relative;
+        background: #fff;
+        border-radius: 1rem;
+      }
+      .gradient-border::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        padding: 1.5px;
+        border-radius: inherit;
+        background: linear-gradient(135deg, #0369A1, #8C2CE6 55%, #10B981);
+        -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        opacity: 0.55;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+      }
+      .gradient-border:hover::before { opacity: 1; }
+
+      /* Lift + spring on hover, smoother than translate alone */
+      .lift {
+        transition: transform 0.35s cubic-bezier(0.16,1,0.3,1), box-shadow 0.35s cubic-bezier(0.16,1,0.3,1);
+        will-change: transform;
+      }
+      .lift:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 24px 48px -22px rgba(30,58,138,0.30);
+      }
+
+      /* Slow counter-floating blob (hero decoratives) */
+      @keyframes floatBlob {
+        0%, 100% { transform: translate(0,0) scale(1); }
+        50%      { transform: translate(14px,-22px) scale(1.06); }
+      }
+      .float-blob { animation: floatBlob 16s ease-in-out infinite; }
+      .float-blob-slow { animation: floatBlob 22s ease-in-out infinite reverse; }
+
+      /* Gentle scale-breath for icons / mascots */
+      @keyframes breathe {
+        0%, 100% { transform: scale(1); }
+        50%      { transform: scale(1.07); }
+      }
+      .breathe { animation: breathe 4s ease-in-out infinite; }
+
+      /* Sheen across the primary CTA on hover */
+      .btn-primary {
+        position: relative;
+        overflow: hidden;
+        isolation: isolate;
+      }
+      .btn-primary::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(100deg, transparent 30%, rgba(255,255,255,0.35) 50%, transparent 70%);
+        transform: translateX(-120%);
+        transition: transform 0.6s cubic-bezier(0.16,1,0.3,1);
+        z-index: -1;
+      }
+      .btn-primary:hover::before { transform: translateX(120%); }
+
+      /* Section divider — soft wave/fade between bands */
+      .fade-edge-top   { -webkit-mask-image: linear-gradient(to bottom, transparent, #000 40px); mask-image: linear-gradient(to bottom, transparent, #000 40px); }
+
+      /* Reveal underline for eyebrows */
+      .eyebrow-line::after {
+        content: '';
+        display: block;
+        width: 28px;
+        height: 3px;
+        margin: 10px auto 0;
+        border-radius: 2px;
+        background: linear-gradient(90deg, #0369A1, #8C2CE6);
+      }
+      .eyebrow-line-left::after {
+        content: '';
+        display: block;
+        width: 28px;
+        height: 3px;
+        margin: 10px 0 0;
+        border-radius: 2px;
+        background: linear-gradient(90deg, #8C2CE6, #0369A1);
+      }
+
+      /* FAQ accordion */
+      .faq-item summary::-webkit-details-marker { display: none; }
+      .faq-item summary { outline: none; }
+      .faq-item[open] { box-shadow: 0 12px 30px -16px rgba(30,58,138,0.25); border-color: rgba(3,105,161,0.3); }
+      .faq-item[open] > p { animation: faqReveal 0.35s ease; }
+      @keyframes faqReveal {
+        from { opacity: 0; transform: translateY(-4px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+
+      /* Respect reduced-motion preferences */
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+          animation-duration: 0.001ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.001ms !important;
+        }
+        .fade-up, .fade-in, .scale-in { opacity: 1 !important; transform: none !important; }
+      }
     </style>
   </head>
   <body class="font-[Inter,system-ui,sans-serif] bg-white text-gray-900 antialiased overflow-x-hidden" style="font-feature-settings: 'kern' 1, 'liga' 1;">
 
     <!-- ===== NAVBAR ===== -->
-    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100/80">
+    <header id="site-header" class="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-transparent transition-all duration-300">
       <nav class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-        <a href="/" class="flex items-center gap-2.5">
-          <img src="/logoOtto.png" alt="OTTO" class="h-8 w-auto" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <a href="/" class="flex items-center gap-2.5 group">
+          <img src="/logoOtto.png" alt="OTTO" class="h-8 w-auto transition-transform duration-300 group-hover:scale-105" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
           <span class="hidden items-center gap-1">
-            <span class="text-2xl font-extrabold text-[#0369A1]">otto</span>
+            <span class="text-2xl font-extrabold text-gradient">otto</span>
           </span>
-          <span class="text-[10px] text-gray-400 font-medium hidden sm:block tracking-wide">Nivel Primario · Provincia de Buenos Aires</span>
+          <span class="text-[10px] text-gray-400 font-medium hidden sm:block tracking-wide border-l border-gray-200 pl-2.5">Para escuelas primarias · Provincia de Buenos Aires</span>
         </a>
         <div class="flex items-center gap-2">
-          <a href="https://app.ottoedu.com.ar/login"
+          <a href={LOGIN}
             class="text-sm font-medium text-gray-600 hover:text-[#0369A1] transition-colors px-4 py-2 rounded-lg hover:bg-gray-50">
             Iniciar sesión
           </a>
-          <a href="https://app.ottoedu.com.ar/register"
-            class="flex items-center gap-1.5 px-4 py-2.5 bg-[#0369A1] text-white text-sm font-semibold rounded-xl hover:bg-[#1E3A8A] hover:shadow-md transition-all">
-            Empezá gratis
+          <a href={WA}
+            class="btn-primary group flex items-center gap-1.5 px-4 py-2.5 bg-[#0369A1] text-white text-sm font-semibold rounded-xl shadow-sm hover:shadow-lg hover:shadow-[#0369A1]/25 hover:-translate-y-0.5 transition-all duration-300">
+            Agendá una demo
             <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 bounce-arrow" viewBox="0 0 20 20" fill="currentColor">
               <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
             </svg>
@@ -164,250 +328,242 @@ import '../styles/global.css';
       </nav>
     </header>
 
-    <!-- ===== HERO — Mensaje principal: "Reemplazá el particular" ===== -->
-    <section class="hero-bg relative overflow-hidden pt-10 pb-14">
+    <!-- ===== HERO — Mensaje principal: la sustitución del gasto familiar ===== -->
+    <section class="hero-bg relative overflow-hidden pt-9 pb-12 md:pt-10 md:pb-14">
       <!-- Decorative elements -->
-      <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-[#0369A1]/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4 pointer-events-none"></div>
-      <div class="absolute bottom-0 left-0 w-80 h-80 bg-[#8C2CE6]/5 rounded-full blur-3xl translate-y-1/3 -translate-x-1/4 pointer-events-none"></div>
+      <div class="absolute inset-0 dot-grid pointer-events-none"></div>
+      <div class="float-blob absolute top-0 right-0 w-[620px] h-[620px] bg-[#0369A1]/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4 pointer-events-none"></div>
+      <div class="float-blob-slow absolute bottom-0 left-0 w-96 h-96 bg-[#8C2CE6]/10 rounded-full blur-3xl translate-y-1/3 -translate-x-1/4 pointer-events-none"></div>
+      <div class="float-blob absolute top-1/3 left-1/2 w-72 h-72 bg-[#10B981]/8 rounded-full blur-3xl pointer-events-none"></div>
 
       <div class="relative max-w-6xl mx-auto px-4 sm:px-6 grid md:grid-cols-2 gap-10 items-center">
         <!-- Texto -->
         <div>
-          <span class="fade-up inline-flex items-center gap-2 px-3.5 py-1.5 bg-white rounded-full border border-gray-200 text-xs font-semibold text-gray-600 mb-5 shadow-sm">
+          <span class="fade-up inline-flex items-center gap-2 px-3.5 py-1.5 bg-white/90 backdrop-blur rounded-full border border-[#0369A1]/15 text-xs font-semibold text-[#1E3A8A] mb-5 shadow-sm shadow-[#0369A1]/5">
             <span class="pulse-dot w-2 h-2 rounded-full bg-[#10B981] inline-block flex-shrink-0"></span>
-            Para niños de 1° a 3° grado
+            Seleccionamos pocas escuelas por zona · Ciclo 2026
           </span>
 
-          <h1 class="fade-up delay-1 text-3xl sm:text-4xl font-extrabold text-gray-900 leading-[1.1] tracking-tight mb-2">
-            No gastes más en<br/>
-            <span class="text-[#EF4444] strike-line" id="strike-target">clases particulares.</span>
+          <h1 class="fade-up delay-1 text-3xl sm:text-[2.6rem] font-extrabold text-gray-900 leading-[1.08] tracking-tight mb-3">
+            Las familias de tu escuela ya pagan<br/>
+            <span class="text-[#EF4444] strike-line" id="strike-target">$80.000–$150.000 por mes</span> en particulares.
           </h1>
-          <h2 class="fade-up delay-2 text-2xl sm:text-3xl font-extrabold text-[#0369A1] leading-tight mb-5">
-            Probá OTTO gratis.
+          <h2 class="fade-up delay-2 text-2xl sm:text-3xl font-extrabold leading-tight mb-5">
+            <span class="text-gradient">OTTO lo trae adentro de la escuela</span>, por $3.000 por alumno al mes.
           </h2>
 
           <p class="fade-up delay-3 text-base text-gray-500 leading-relaxed mb-6">
-            El refuerzo escolar de tu hijo, <strong class="text-gray-800 font-semibold">alineado exactamente a lo que aprende en su escuela de Buenos Aires</strong>. Actividades gamificadas, adaptativas y con seguimiento para padres. Sin turnos, sin traslados, disponible las 24 hs.
+            Plataforma web de refuerzo de Matemática y Prácticas del Lenguaje para primer ciclo, <strong class="text-gray-800 font-semibold">alineada al Diseño Curricular de la DGCyE</strong>. Tus docentes eligen una actividad y la proyectan en el pizarrón o la asignan en un clic, los chicos practican jugando, y la escuela puede mostrarle a cada familia cómo avanza su hijo. Algo que ninguna otra escuela de tu zona ofrece todavía.
           </p>
 
           <!-- Stats -->
-          <div class="fade-up delay-4 flex gap-8 mb-6">
-            <div>
-              <p class="text-2xl font-extrabold text-[#1E3A8A] tracking-tight">4</p>
-              <p class="text-xs text-gray-400 mt-0.5">Materias del<br/>currículum</p>
-            </div>
-            <div class="w-px bg-gray-200"></div>
-            <div>
-              <p class="text-2xl font-extrabold text-[#1E3A8A] tracking-tight">9</p>
-              <p class="text-xs text-gray-400 mt-0.5">Tipos de<br/>actividades</p>
-            </div>
-            <div class="w-px bg-gray-200"></div>
-            <div>
-              <p class="text-2xl font-extrabold text-[#1E3A8A] tracking-tight">100%</p>
-              <p class="text-xs text-gray-400 mt-0.5">Alineación<br/>curricular</p>
-            </div>
+          <div class="fade-up delay-4 grid grid-cols-3 gap-3 mb-7">
+            {[
+              { v: "$3.000", l: "Por alumno al mes" },
+              { v: "9", l: "Tipos de actividad interactiva" },
+              { v: "DGCyE", l: "Alineado al Diseño Curricular" },
+            ].map(({ v, l }) => (
+              <div class="rounded-2xl bg-white/70 backdrop-blur border border-white/80 shadow-sm px-4 py-3 lift">
+                <p class="text-xl sm:text-2xl font-extrabold text-gradient tracking-tight">{v}</p>
+                <p class="text-[11px] text-gray-500 mt-1 leading-snug">{l}</p>
+              </div>
+            ))}
           </div>
 
           <div class="fade-up delay-5 flex flex-col sm:flex-row gap-3">
-            <a href="https://app.ottoedu.com.ar/register"
-              class="flex items-center justify-center gap-2 px-7 py-3.5 bg-[#0369A1] text-white font-bold rounded-xl hover:bg-[#1E3A8A] hover:shadow-lg transition-all text-base">
-              Empezá gratis hoy
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
+            <a href={WA_DEMO}
+              class="btn-primary group flex items-center justify-center gap-2 px-7 py-3.5 bg-[#0369A1] text-white font-bold rounded-2xl shadow-lg shadow-[#0369A1]/25 hover:shadow-xl hover:shadow-[#0369A1]/30 hover:-translate-y-0.5 transition-all duration-300 text-base">
+              Agendá una demo
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 transition-transform group-hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
               </svg>
             </a>
-            <a href="https://app.ottoedu.com.ar/login"
-              class="flex items-center justify-center px-7 py-3.5 border border-gray-300 text-gray-700 font-semibold rounded-xl hover:bg-gray-50 hover:border-gray-400 transition-all text-base">
-              Iniciar sesión
+            <a href={MAIL}
+              class="group flex items-center justify-center gap-2 px-7 py-3.5 border border-gray-300 bg-white/60 backdrop-blur text-gray-700 font-semibold rounded-2xl hover:bg-white hover:border-[#0369A1]/40 hover:text-[#0369A1] transition-all duration-300 text-base">
+              <svg class="w-4 h-4 text-gray-400 group-hover:text-[#0369A1] transition-colors" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+              </svg>
+              Escribinos por mail
             </a>
           </div>
-          <p class="fade-up delay-5 text-xs text-gray-400 mt-3">Sin tarjeta de crédito · Cancelás cuando querés.</p>
+          <p class="fade-up delay-5 text-xs text-gray-400 mt-3">Sin prueba gratis · Cláusula de salida las primeras 3 semanas de agosto, sin cargo ni penalidad. La demo no compromete a nada.</p>
         </div>
 
-        <!-- Card flotante mock-up -->
+        <!-- Card flotante mock-up — vista del docente / clase -->
         <div class="fade-in delay-3 flex justify-center">
-          <div class="float-card glass-card rounded-2xl shadow-xl ring-1 ring-black/5 p-6 w-full max-w-sm">
-            <div class="flex items-center gap-3 mb-5">
-              <div class="w-10 h-10 flex items-center justify-center overflow-hidden">
-                <img src="/pet.png" alt="OTTO, el búho mascota de la plataforma de refuerzo escolar" width="40" height="40" loading="eager" decoding="async" class="w-full h-full object-contain" />
+          <div class="relative w-full max-w-sm">
+            <!-- halo glow behind card -->
+            <div class="absolute -inset-6 bg-gradient-to-tr from-[#0369A1]/20 via-[#8C2CE6]/15 to-[#10B981]/15 blur-2xl rounded-[2rem] pointer-events-none"></div>
+
+            <div class="float-card glass-card relative rounded-3xl shadow-2xl shadow-[#1E3A8A]/15 ring-1 ring-white/60 p-6 w-full">
+              <div class="flex items-center gap-3 mb-5">
+                <div class="w-11 h-11 rounded-xl bg-[#0369A1]/8 flex items-center justify-center overflow-hidden">
+                  <img src="/pet.png" alt="OTTO, el búho mascota de la plataforma educativa" width="40" height="40" loading="eager" decoding="async" class="w-9 h-9 object-contain breathe" />
+                </div>
+                <div class="flex-1 min-w-0">
+                  <p class="font-semibold text-gray-900 text-sm">Clase · 1° A</p>
+                  <p class="text-xs text-gray-400 mt-0.5">Práctica: Lectura — La leyenda del ombú</p>
+                </div>
+                <span class="text-[11px] bg-emerald-50 text-emerald-600 font-semibold px-2.5 py-1 rounded-full border border-emerald-100 inline-flex items-center gap-1">
+                  <span class="pulse-dot w-1.5 h-1.5 rounded-full bg-emerald-500"></span>Lista
+                </span>
               </div>
-              <div class="flex-1 min-w-0">
-                <p class="font-semibold text-gray-900 text-sm">Matemática · 2° Grado</p>
-                <p class="text-xs text-gray-400 mt-0.5">Actividad: Contar elementos</p>
+              <div class="w-full bg-gray-100 rounded-full h-2 mb-1.5 overflow-hidden">
+                <div class="progress-fill bg-gradient-to-r from-[#0369A1] to-[#8C2CE6] h-2 rounded-full"></div>
               </div>
-              <span class="text-xs bg-emerald-50 text-emerald-600 font-semibold px-2.5 py-1 rounded-full border border-emerald-100">En progreso</span>
+              <p class="text-[11px] text-gray-400 mb-5">Curso completado</p>
+              <div class="grid grid-cols-2 gap-3 mb-5">
+                <div class="bg-emerald-50 rounded-2xl p-3.5 flex items-center gap-2.5 border border-emerald-100/80 lift">
+                  <svg class="w-4 h-4 text-emerald-500 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                  <p class="text-sm font-semibold text-gray-700">24 activos</p>
+                </div>
+                <div class="bg-blue-50 rounded-2xl p-3.5 flex items-center gap-2.5 border border-blue-100/80 lift">
+                  <svg class="w-4 h-4 text-[#0369A1] flex-shrink-0" viewBox="0 0 20 20" fill="currentColor"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                  <p class="text-sm font-semibold text-gray-700">12 tareas</p>
+                </div>
+              </div>
+              <div class="rounded-2xl bg-gradient-to-r from-gray-50 to-blue-50/50 border border-gray-100 px-4 py-3 flex items-center gap-2">
+                <svg class="w-3.5 h-3.5 text-[#0369A1] flex-shrink-0" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/></svg>
+                <span class="text-xs text-gray-500">La docente eligió la actividad y la <span class="font-semibold text-[#0369A1]">asignó en 1 clic</span></span>
+              </div>
             </div>
-            <div class="w-full bg-gray-100 rounded-full h-1.5 mb-5">
-              <div class="progress-fill bg-[#0369A1] h-1.5 rounded-full"></div>
-            </div>
-            <div class="grid grid-cols-2 gap-3 mb-5">
-              <div class="bg-emerald-50 rounded-xl p-3.5 flex items-center gap-2.5 border border-emerald-100/80">
-                <svg class="w-4 h-4 text-emerald-500 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                <p class="text-sm font-semibold text-gray-700">8 de 10 ok</p>
+
+            <!-- floating mini badge -->
+            <div class="float-card absolute -bottom-4 -left-4 bg-white rounded-2xl shadow-xl ring-1 ring-black/5 px-4 py-2.5 flex items-center gap-2" style="animation-delay: 1.2s;">
+              <span class="text-lg">🎯</span>
+              <div>
+                <p class="text-[11px] font-bold text-gray-900 leading-none">+50 cristales</p>
+                <p class="text-[10px] text-gray-400 mt-0.5">esta semana</p>
               </div>
-              <div class="bg-blue-50 rounded-xl p-3.5 flex items-center gap-2.5 border border-blue-100/80">
-                <svg class="w-4 h-4 text-[#0369A1] flex-shrink-0" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                <p class="text-sm font-semibold text-gray-700">+50 pts</p>
-              </div>
-            </div>
-            <div class="rounded-xl bg-gray-50 border border-gray-100 px-4 py-3 flex items-center gap-2">
-              <svg class="w-3.5 h-3.5 text-[#0369A1] flex-shrink-0" viewBox="0 0 20 20" fill="currentColor"><path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"/></svg>
-              <span class="text-xs text-gray-500">Para padres: <span class="font-semibold text-[#0369A1]">Sofía completó 3 actividades hoy</span></span>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ===== TRUST BAR ===== -->
-    <div class="bg-[#1E3A8A] py-5">
-      <div class="max-w-5xl mx-auto px-4 sm:px-6">
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
+    <!-- ===== TRUST BAR — tranquilizadores institucionales / pre-objeciones ===== -->
+    <div class="relative bg-gradient-to-r from-[#1E3A8A] via-[#0369A1] to-[#1E3A8A] py-6 overflow-hidden">
+      <div class="absolute inset-0 dot-grid-light opacity-60 pointer-events-none"></div>
+      <div class="relative max-w-5xl mx-auto px-4 sm:px-6">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-4 text-center">
           {[
-            "Contenido de Buenos Aires",
-            "Seguro para menores",
-            "Sin publicidad",
-            "Cancelás cuando querés",
+            "Alineado al Diseño Curricular DGCyE",
+            "Los datos de los alumnos los administra la escuela",
+            "Validado por docentes reales de primer ciclo",
+            "Cláusula de salida sin cargo en agosto",
           ].map((label) => (
             <div class="flex items-center justify-center gap-2">
-              <svg class="w-4 h-4 text-emerald-400 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-              <p class="text-sm text-white font-medium">{label}</p>
+              <span class="w-5 h-5 rounded-full bg-emerald-400/20 flex items-center justify-center flex-shrink-0">
+                <svg class="w-3 h-3 text-emerald-300" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              </span>
+              <p class="text-sm text-white/95 font-medium">{label}</p>
             </div>
           ))}
         </div>
       </div>
     </div>
 
-    <!-- ===== COMPARATIVA vs PARTICULAR ===== -->
-    <section class="py-16 bg-white">
+    <!-- ===== PROBLEMA 1: el gasto familiar que ya existe (sustitución) ===== -->
+    <section class="py-12 md:py-16 bg-white">
       <div class="max-w-5xl mx-auto px-4 sm:px-6">
-        <div class="text-center mb-10">
-          <span class="fade-up inline-block px-3.5 py-1 bg-red-50 text-red-500 text-xs font-semibold rounded-full mb-4 tracking-wide uppercase">
-            El ahorro es real
+        <div class="text-center mb-8">
+          <span class="fade-up eyebrow-line inline-block px-3.5 py-1 bg-red-50 text-red-500 text-xs font-bold rounded-full mb-4 tracking-widest uppercase">
+            El gasto que ya existe
           </span>
-          <h2 class="fade-up text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight mb-3">
-            OTTO vs. Clases particulares
+          <h2 class="fade-up text-2xl sm:text-[2rem] font-extrabold text-gray-900 tracking-tight mb-3 max-w-3xl mx-auto leading-tight">
+            Hoy las familias de tu escuela ya pagan refuerzo. Por fuera, y desordenado.
           </h2>
           <p class="fade-up text-gray-500 text-base max-w-2xl mx-auto leading-relaxed">
-            Los padres argentinos pagan entre $15.000 y $40.000 por mes en clases particulares. OTTO ofrece lo mismo —y más— en formato digital, gamificado y alineado al currículo real de tu hijo.
+            No es un gasto nuevo. Una familia de primer ciclo gasta entre $80.000 y $150.000 por mes en clases particulares, por un solo chico, sin coordinación con la maestra. OTTO hace ese mismo refuerzo adentro de la escuela, para todos los chicos a la vez, alineado a lo que enseñás, por $3.000 por alumno al mes. La escuela puede sumarlo a la cuota: es sustitución de lo que la familia ya gasta, no un costo extra.
           </p>
         </div>
 
-        <div class="fade-up grid md:grid-cols-2 gap-5 max-w-3xl mx-auto">
-          <!-- Clases particulares -->
-          <div class="rounded-2xl border border-gray-200 p-7 bg-gray-50/50">
+        <div class="grid md:grid-cols-2 gap-5 max-w-3xl mx-auto items-stretch">
+          <!-- Clase particular de hoy -->
+          <div class="fade-up rounded-3xl border border-gray-200 p-7 bg-gray-50/60 lift">
             <div class="flex items-center gap-3 mb-6">
-              <div class="w-9 h-9 rounded-xl bg-gray-200 flex items-center justify-center flex-shrink-0">
+              <div class="w-10 h-10 rounded-2xl bg-gray-200 flex items-center justify-center flex-shrink-0">
                 <svg class="w-5 h-5 text-gray-500" viewBox="0 0 20 20" fill="currentColor"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
               </div>
-              <h3 class="font-bold text-gray-600 text-base">Clases particulares</h3>
+              <h3 class="font-bold text-gray-600 text-base">La clase particular de hoy</h3>
             </div>
             <ul class="space-y-3.5">
               {[
-                "$15.000–$40.000 por mes",
-                "Traslados y horarios fijos",
-                "Contenido genérico, no tu currículo",
-                "Sin seguimiento digital",
-                "Solo 2–3 veces por semana",
-                "Puede ser aburrido para los chicos",
+                "$80.000–$150.000 por mes, por un solo chico",
+                "Afuera de la escuela, sin hablar con la maestra",
+                "Contenido genérico, no tu planificación",
+                "La dirección no ve nada de lo que pasa",
+                "Solo las familias que pueden pagarlo",
               ].map(t => (
                 <li class="flex items-center gap-3 text-sm text-gray-500">
-                  <svg class="w-4 h-4 text-red-400 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+                  <span class="w-5 h-5 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-3 h-3 text-red-500" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+                  </span>
                   {t}
                 </li>
               ))}
             </ul>
           </div>
 
-          <!-- OTTO -->
-          <div class="rounded-2xl border-2 border-[#0369A1] p-7 relative shadow-lg bg-white">
-            <div class="absolute -top-3.5 right-5 bg-[#0369A1] text-white text-[10px] font-bold px-3 py-1 rounded-full tracking-widest uppercase">
-              Recomendado
+          <!-- OTTO adentro de la escuela -->
+          <div class="fade-up delay-1 gradient-border shimmer rounded-3xl p-7 relative shadow-xl shadow-[#0369A1]/10 bg-white lift">
+            <div class="absolute -top-3.5 right-5 bg-gradient-to-r from-[#0369A1] to-[#1E3A8A] text-white text-[10px] font-bold px-3.5 py-1 rounded-full tracking-widest uppercase shadow-md shadow-[#0369A1]/30">
+              Para la escuela
             </div>
             <div class="flex items-center gap-3 mb-6">
-              <div class="w-9 h-9 rounded-xl bg-[#0369A1]/10 flex items-center justify-center flex-shrink-0 text-lg">🦉</div>
-              <h3 class="font-bold text-[#0369A1] text-base">OTTO</h3>
+              <div class="w-10 h-10 rounded-2xl bg-[#0369A1]/10 flex items-center justify-center flex-shrink-0 text-xl">🦉</div>
+              <h3 class="font-bold text-[#0369A1] text-base">OTTO, adentro de tu escuela</h3>
             </div>
             <ul class="space-y-3.5">
               {[
-                "Suscripción accesible",
-                "Desde casa, cuando quieran",
-                "100% alineado al aula de tu hijo",
-                "Reportes de progreso para padres",
-                "Gamificado: niveles, puntos e insignias",
-                "Disponible las 24 hs, todos los días",
+                "$3.000 por alumno al mes — se puede pasar a la cuota familiar",
+                "Adentro del aula, elegido y lanzado por la maestra",
+                "Alineado al Diseño Curricular DGCyE",
+                "La dirección y la familia ven el progreso de cada curso",
+                "Para todos los chicos del grado, no solo algunos",
               ].map(t => (
                 <li class="flex items-center gap-3 text-sm text-gray-700">
-                  <svg class="w-4 h-4 text-[#10B981] flex-shrink-0" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                  <span class="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-3 h-3 text-[#10B981]" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                  </span>
                   {t}
                 </li>
               ))}
             </ul>
-            <a href="https://app.ottoedu.com.ar/register"
-              class="mt-7 w-full flex items-center justify-center gap-2 py-3 bg-[#0369A1] text-white font-bold rounded-xl hover:bg-[#1E3A8A] hover:shadow-md transition-all text-sm">
-              Empezá gratis
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+            <a href={WA_FAMILIAS}
+              class="btn-primary group mt-7 w-full flex items-center justify-center gap-2 py-3 bg-[#0369A1] text-white font-bold rounded-2xl shadow-lg shadow-[#0369A1]/20 hover:-translate-y-0.5 hover:shadow-xl transition-all duration-300 text-sm">
+              Quiero verlo en una demo
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
             </a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ===== DIFERENCIAL: El currículo como moat ===== -->
-    <section class="py-16 section-alt">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6">
-        <div class="text-center mb-10">
-          <span class="fade-up inline-block px-3.5 py-1 bg-[#0369A1]/8 text-[#0369A1] text-xs font-semibold rounded-full mb-4 tracking-wide uppercase">
-            Nuestra mayor ventaja
-          </span>
-          <h2 class="fade-up text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight mb-3">
-            El refuerzo que ninguna app global puede dar
-          </h2>
-          <p class="fade-up text-gray-500 text-base max-w-2xl mx-auto leading-relaxed">
-            Khan Academy, Duolingo y otras plataformas usan contenido genérico americano. OTTO es la única plataforma alineada al <strong class="text-[#1E3A8A] font-semibold">Diseño Curricular oficial de la Provincia de Buenos Aires</strong>.
-          </p>
-        </div>
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {[
-            { icon: "📐", title: "Matemática", badge: "1° a 3° grado", desc: "Números, sumas, restas, geometría y resolución de problemas según lo que enseña la maestra." },
-            { icon: "📖", title: "Prácticas del Lenguaje", badge: "1° a 3° grado", desc: "Lectura, escritura, comprensión textual y vocabulario alineado al DC de Buenos Aires." },
-            { icon: "🔬", title: "Ciencias Naturales", badge: "1° a 3° grado", desc: "Los seres vivos, el cuerpo, el ambiente y más, tal como aparece en los cuadernos." },
-            { icon: "🌎", title: "Ciencias Sociales", badge: "1° a 3° grado", desc: "La familia, el barrio, el tiempo histórico y la vida en comunidad según el currículum." },
-          ].map(({ icon, title, badge, desc }, i) => (
-            <div class={`fade-up delay-${i + 1} bg-white rounded-2xl border border-gray-100 hover:border-[#0369A1]/20 hover:shadow-lg hover:-translate-y-1 transition-all duration-200 p-6`}>
-              <div class="w-12 h-12 bg-[#0369A1]/8 rounded-xl flex items-center justify-center text-xl mb-5">{icon}</div>
-              <span class="text-[10px] font-bold uppercase tracking-widest text-[#8C2CE6]">{badge}</span>
-              <h3 class="font-bold text-gray-900 mt-2 mb-2 text-[15px]">{title}</h3>
-              <p class="text-sm text-gray-500 leading-relaxed">{desc}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== PARA PADRES OCUPADOS ===== -->
-    <section class="py-16 bg-white">
+    <!-- ===== PROBLEMA 2: el docente arma todo desde cero ===== -->
+    <section class="py-11 md:py-14 bg-white">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 grid md:grid-cols-2 gap-10 items-center">
         <div>
-          <span class="fade-up inline-block px-3.5 py-1 bg-purple-50 text-[#8C2CE6] text-xs font-semibold rounded-full mb-4 tracking-wide uppercase">
-            Para padres que quieren lo mejor
+          <span class="fade-up eyebrow-line-left inline-block px-3.5 py-1 bg-purple-50 text-[#8C2CE6] text-xs font-bold rounded-full mb-4 tracking-widest uppercase">
+            Para tus docentes de primer ciclo
           </span>
-          <h2 class="fade-up text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight mb-4">
-            La ayuda con las tareas que vos no tenés tiempo de dar
+          <h2 class="fade-up text-2xl sm:text-[2rem] font-extrabold text-gray-900 tracking-tight mb-4 leading-tight">
+            Tus maestras dejan de armar actividades de cero
           </h2>
           <p class="fade-up text-gray-500 text-base leading-relaxed mb-6">
-            Sabemos que trabajás mucho. OTTO es el compañero de estudio de tu hijo cuando no podés estar. Con feedback inmediato, pistas y explicaciones pensadas para chicos de 6 a 9 años.
+            Hoy una maestra de primer ciclo pierde horas planificando y adaptando los textos largos y estáticos de <strong class="text-gray-800 font-semibold">Continuemos Estudiando</strong> para que un nene de 6 años los pueda hacer. En OTTO la actividad ya está hecha y alineada al currículo: la docente elige, la proyecta en el pizarrón o la asigna con un clic. No construye nada. Las plataformas mueren cuando la maestra tiene que cargar todo; acá no carga nada.
           </p>
-          <ul class="space-y-3.5">
+          <ul class="space-y-3">
             {[
-              { title: "Notificaciones de progreso", desc: "Recibís alertas sin abrir la app" },
-              { title: "Reportes semanales", desc: "Lo que aprendió y lo que necesita reforzar" },
-              { title: "Adaptativo", desc: "Más fácil si le cuesta, más difícil si domina" },
-              { title: "Motivación garantizada", desc: "Tu hijo progresa y lo ve en tiempo real con puntos e insignias" },
+              { title: "Elige, no arma", desc: "Una biblioteca de Contenido alineada a la DGCyE — nunca parte de una hoja en blanco" },
+              { title: "Proyecta o asigna en 1 clic", desc: "En el pizarrón del aula o a toda la clase para hacer en casa" },
+              { title: "Ve el progreso sin corregir a mano", desc: "Quién resolvió, quién no y dónde se traba cada chico" },
+              { title: "Se aprende en 10 minutos", desc: "La capacitación es una sola sesión, sin costo, en el receso de julio" },
             ].map(({ title, desc }, i) => (
-              <li class={`fade-up delay-${i + 1} flex items-start gap-4`}>
-                <div class="w-8 h-8 bg-[#0369A1]/8 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <svg class="w-4 h-4 text-[#0369A1]" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              <li class={`fade-up delay-${i + 1} flex items-start gap-4 rounded-2xl p-3 hover:bg-[#0369A1]/[0.04] transition-colors`}>
+                <div class="w-9 h-9 bg-gradient-to-br from-[#0369A1] to-[#1E3A8A] rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5 shadow-sm shadow-[#0369A1]/30">
+                  <svg class="w-4 h-4 text-white" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
                 </div>
                 <div>
                   <p class="font-semibold text-gray-900 text-sm">{title}</p>
@@ -416,186 +572,404 @@ import '../styles/global.css';
               </li>
             ))}
           </ul>
+          <a href={WA_DOCENTE}
+            class="group mt-6 inline-flex items-center gap-2 text-sm font-bold text-[#0369A1] hover:text-[#8C2CE6] transition-colors">
+            Mostrame la vista del docente
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 bounce-arrow" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+          </a>
         </div>
-        <!-- Notificaciones mock -->
-        <div class="fade-in delay-2 flex flex-col gap-3.5">
-          {[
-            { name: "Sofía", grade: "2° grado", msg: "Completó 3 actividades de Matemática", time: "hace 5 min", accent: "#10B981", accentBg: "#f0fdf4", avatar: "/buho-1.png" },
-            { name: "Lucas", grade: "1° grado", msg: "Subió de nivel en Prácticas del Lenguaje", time: "hace 1 h", accent: "#0369A1", accentBg: "#eff6ff", avatar: "/buho-2.png" },
-            { name: "Martina", grade: "3° grado", msg: "Ganó 120 puntos esta semana", time: "hoy", accent: "#8C2CE6", accentBg: "#faf5ff", avatar: "/buho-3.png" },
-          ].map(({ name, grade, msg, time, accent, accentBg, avatar }) => (
-            <div class="bg-white border border-gray-100 rounded-2xl shadow-sm p-4 flex items-start gap-3.5 hover:-translate-y-0.5 transition-transform" style={`border-left: 3px solid ${accent};`}>
-              <div class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 overflow-hidden" style={`background: ${accentBg};`}>
-                <img src={avatar} alt={`Avatar de OTTO notificando el progreso de ${name} en ${grade}`} width="42" height="42" loading="lazy" decoding="async" class="w-full h-full object-contain" />
-              </div>
-              <div class="flex-1 min-w-0">
-                <div class="flex items-center justify-between mb-1">
-                  <p class="font-semibold text-gray-900 text-sm">{name} <span class="text-gray-400 font-normal">· {grade}</span></p>
-                  <span class="text-[10px] text-gray-400 ml-2 flex-shrink-0">{time}</span>
+        <!-- Mock: acciones del docente en la plataforma -->
+        <div class="relative">
+          <div class="absolute -inset-4 bg-gradient-to-br from-[#8C2CE6]/10 to-[#0369A1]/10 blur-2xl rounded-[2rem] pointer-events-none"></div>
+          <div class="fade-in delay-2 relative flex flex-col gap-3.5">
+            {[
+              { grade: "Lengua · 1° B", msg: "Actividad “Sílabas” asignada a 24 alumnos", time: "hace 5 min", accent: "#0369A1", accentBg: "#eff6ff", avatar: "/buho-1.png" },
+              { grade: "Matemática · 2° A", msg: "Secuencia de sumas proyectada en clase", time: "hace 1 h", accent: "#10B981", accentBg: "#f0fdf4", avatar: "/buho-2.png" },
+              { grade: "Ciencias · 3°", msg: "Nueva actividad disponible en la biblioteca", time: "hoy", accent: "#8C2CE6", accentBg: "#faf5ff", avatar: "/buho-3.png" },
+            ].map(({ grade, msg, time, accent, accentBg, avatar }) => (
+              <div class="bg-white border border-gray-100 rounded-2xl shadow-md shadow-gray-200/50 p-4 flex items-start gap-3.5 lift" style={`border-left: 4px solid ${accent};`}>
+                <div class="w-11 h-11 rounded-2xl flex items-center justify-center flex-shrink-0 overflow-hidden" style={`background: ${accentBg};`}>
+                  <img src={avatar} alt={`OTTO en la actividad de ${grade}`} width="42" height="42" loading="lazy" decoding="async" class="w-full h-full object-contain" />
                 </div>
-                <p class="text-sm text-gray-600">{msg}</p>
+                <div class="flex-1 min-w-0">
+                  <div class="flex items-center justify-between mb-1">
+                    <p class="font-semibold text-gray-900 text-sm">{grade}</p>
+                    <span class="text-[10px] text-gray-400 ml-2 flex-shrink-0 inline-flex items-center gap-1">
+                      <span class="w-1.5 h-1.5 rounded-full" style={`background:${accent};`}></span>{time}
+                    </span>
+                  </div>
+                  <p class="text-sm text-gray-600">{msg}</p>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ===== PRECIO ===== -->
-    <section class="py-16 section-alt">
-      <div class="max-w-2xl mx-auto px-4 sm:px-6 text-center">
-        <span class="fade-up inline-block px-3.5 py-1 bg-[#0369A1]/8 text-[#0369A1] text-xs font-semibold rounded-full mb-4 tracking-wide uppercase">
-          Accesible para todas las familias
-        </span>
-        <h2 class="fade-up text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight mb-3">
-          Precio accesible, sin sorpresas
-        </h2>
-        <p class="fade-up text-gray-500 text-base leading-relaxed mb-8 max-w-xl mx-auto">
-          Estamos definiendo el precio de lanzamiento. Registrate ahora y te avisamos primero —con descuento especial de early adopter.
-        </p>
-        <a href="https://app.ottoedu.com.ar/register"
-          class="fade-up inline-flex items-center gap-2 px-8 py-4 bg-[#0369A1] text-white font-bold rounded-2xl hover:bg-[#1E3A8A] hover:shadow-lg transition-all text-base">
-          Quiero el descuento de lanzamiento
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-          </svg>
-        </a>
-        <p class="fade-up text-xs text-gray-400 mt-3">Sin tarjeta de crédito · Cancelás cuando querés.</p>
-      </div>
-    </section>
-
-    <!-- ===== PILARES PEDAGÓGICOS ===== -->
-    <section class="py-16 section-alt">
+    <!-- ===== CÓMO FUNCIONA / PRODUCTO — con honestidad de cobertura ===== -->
+    <section class="py-11 md:py-14 section-alt">
       <div class="max-w-6xl mx-auto px-4 sm:px-6">
-        <div class="text-center mb-10">
-          <h2 class="fade-up text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight mb-2">
-            Cómo aprenden los chicos en OTTO
+        <div class="text-center mb-7">
+          <span class="fade-up eyebrow-line inline-block px-3.5 py-1 bg-[#0369A1]/8 text-[#0369A1] text-xs font-bold rounded-full mb-4 tracking-widest uppercase">
+            Lo que ninguna app global te da
+          </span>
+          <h2 class="fade-up text-2xl sm:text-[2rem] font-extrabold text-gray-900 tracking-tight mb-3 max-w-3xl mx-auto leading-tight">
+            Una plataforma web alineada al Diseño Curricular de la DGCyE
           </h2>
-          <p class="fade-up text-gray-500 text-base">Basado en pedagogía probada, diseñado para el aula argentina</p>
+          <p class="fade-up text-gray-500 text-base max-w-2xl mx-auto leading-relaxed">
+            Sin instalar nada. La docente asigna desde el panel de <strong class="text-[#1E3A8A] font-semibold">Clases</strong> (estilo Classroom: Alumnos, Asistencias, Tareas, Anuncios) y el chico practica jugando en Mis Misiones, Mi Clase y el mapa de Aventuras. Khan, Duolingo y ClassDojo no están alineados al currículo de la Provincia. OTTO sí, materia por materia.
+          </p>
         </div>
-        <div class="grid md:grid-cols-3 gap-6">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {[
-            { num: "01", color: "#0369A1", title: "Aprendizaje por Problemas", desc: "Los chicos aprenden haciendo, no memorizando. Resolviendo situaciones reales se construye el conocimiento de manera significativa." },
-            { num: "02", color: "#8C2CE6", title: "Andamiaje Progresivo", desc: "Cada secuencia va de lo simple a lo complejo, respetando el ritmo de cada alumno. Feedback inmediato y orientador en cada paso." },
-            { num: "03", color: "#0369A1", title: "Gamificación y Adaptatividad", desc: "Puntos, insignias y niveles mantienen la motivación. La app se adapta: refuerzo si hay dificultades, desafíos si hay dominio." },
-          ].map(({ num, color, title, desc }, i) => (
-            <div class={`fade-up delay-${i + 1} bg-white rounded-2xl border border-gray-100 p-6 hover:-translate-y-1 hover:shadow-md transition-all duration-200`}>
-              <p class="text-4xl font-extrabold mb-4 tracking-tight" style={`color: ${color}; opacity: 0.15;`}>{num}</p>
-              <h3 class="font-bold text-base text-gray-900 mb-2">{title}</h3>
-              <p class="text-gray-500 leading-relaxed text-sm">{desc}</p>
+            { icon: "📖", title: "Lectoescritura", badge: "Módulo de primer ciclo", desc: "Módulo dedicado, transversal a los tres grados, listo para proyectar o asignar.", from: "#0369A1", to: "#1E3A8A" },
+            { icon: "📐", title: "Matemática", badge: "1° validado · 2°/3° en camino", desc: "Números, sumas, restas y resolución de problemas, según lo que enseña tu escuela.", from: "#8C2CE6", to: "#6d28d9" },
+            { icon: "✏️", title: "Prácticas del Lenguaje", badge: "1° validado · 2°/3° en camino", desc: "Lectura, escritura y comprensión, alineadas al Diseño Curricular DGCyE.", from: "#0ea5e9", to: "#0369A1" },
+            { icon: "🔬", title: "Ciencias Naturales", badge: "Disponible", desc: "Los seres vivos, el cuerpo y el ambiente, en actividades interactivas listas para usar.", from: "#10B981", to: "#059669" },
+          ].map(({ icon, title, badge, desc, from, to }, i) => (
+            <div class={`fade-up delay-${i + 1} group bg-white rounded-3xl border border-gray-100 hover:border-transparent lift p-6 relative overflow-hidden`}>
+              <div class="absolute inset-x-0 top-0 h-1 opacity-0 group-hover:opacity-100 transition-opacity" style={`background: linear-gradient(90deg, ${from}, ${to});`}></div>
+              <div class="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl mb-5 shadow-lg transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-3" style={`background: linear-gradient(135deg, ${from}, ${to}); box-shadow: 0 10px 24px -10px ${from};`}>{icon}</div>
+              <span class="text-[10px] font-bold uppercase tracking-widest text-[#8C2CE6]">{badge}</span>
+              <h3 class="font-bold text-gray-900 mt-2 mb-2 text-[15px]">{title}</h3>
+              <p class="text-sm text-gray-500 leading-relaxed">{desc}</p>
             </div>
           ))}
+        </div>
+        <!-- Línea de honestidad de cobertura -->
+        <div class="fade-up mt-8 max-w-3xl mx-auto gradient-border px-6 py-5 flex items-start gap-3.5 bg-white shadow-sm">
+          <span class="w-9 h-9 rounded-xl bg-[#0369A1]/10 flex items-center justify-center flex-shrink-0">
+            <svg class="w-5 h-5 text-[#0369A1]" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/></svg>
+          </span>
+          <p class="text-sm text-gray-600 leading-relaxed">
+            <strong class="text-[#1E3A8A] font-semibold">1° grado está completo y validado por docentes. 2° está casi terminado. 3° en desarrollo.</strong> Te lo decimos de frente para que la comisión sepa exactamente qué recibís en agosto y qué llega después.
+          </p>
         </div>
       </div>
     </section>
 
-    <!-- ===== VS KUMON ===== -->
-    <section class="py-16 bg-white">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6">
+    <!-- ===== PRECIO — licencia institucional + Escuela Fundadora + cláusula de salida ===== -->
+    <section class="py-11 md:py-14 section-alt">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6">
         <div class="text-center mb-8">
-          <h2 class="fade-up text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight mb-3">
-            ¿Usás centros de refuerzo presenciales? Hay una mejor opción.
+          <span class="fade-up eyebrow-line inline-block px-3.5 py-1 bg-[#0369A1]/8 text-[#0369A1] text-xs font-bold rounded-full mb-4 tracking-widest uppercase">
+            Licencia institucional
+          </span>
+          <h2 class="fade-up text-2xl sm:text-[2rem] font-extrabold text-gray-900 tracking-tight mb-3">
+            <span class="text-gradient">$3.000 por alumno al mes.</span> Un solo pago.
           </h2>
-          <p class="fade-up text-gray-500 text-base">Los centros de refuerzo presenciales demuestran que los padres argentinos invierten en educación extraescolar. OTTO ofrece más, en digital.</p>
+          <p class="fade-up text-gray-500 text-base leading-relaxed max-w-xl mx-auto">
+            Licencia institucional, en pesos. Sin planes, sin letra chica. $12.000 por alumno el cuatrimestre · $24.000 el año. Un único pago, con vencimiento el 31 de julio, antes de que arranque el segundo cuatrimestre el 1° de agosto. El valor se puede trasladar a la cuota familiar.
+          </p>
         </div>
-        <div class="fade-up overflow-hidden rounded-2xl border border-gray-100 shadow-sm">
+
+        <!-- Precios planos -->
+        <div class="fade-up grid grid-cols-3 gap-3 max-w-xl mx-auto mb-8">
+          {[
+            { price: "$3.000", unit: "por alumno / mes", feat: true },
+            { price: "$12.000", unit: "por alumno / cuatrimestre", feat: false },
+            { price: "$24.000", unit: "por alumno / año", feat: false },
+          ].map(({ price, unit, feat }) => (
+            <div class={`rounded-2xl p-5 text-center lift ${feat ? 'bg-gradient-to-br from-[#0369A1] to-[#1E3A8A] shadow-lg shadow-[#0369A1]/25' : 'border border-gray-100 bg-white shadow-sm'}`}>
+              <p class={`text-xl sm:text-2xl font-extrabold tracking-tight ${feat ? 'text-white' : 'text-[#1E3A8A]'}`}>{price}</p>
+              <p class={`text-xs mt-1 leading-snug ${feat ? 'text-blue-100' : 'text-gray-400'}`}>{unit}</p>
+            </div>
+          ))}
+        </div>
+
+        <!-- Tabla de referencia por tamaño de escuela -->
+        <div class="fade-up overflow-hidden rounded-2xl border border-gray-100 shadow-sm mb-8">
           <table class="w-full text-sm">
             <thead>
               <tr class="bg-gray-50/80 border-b border-gray-100">
-                <th class="text-left px-6 py-4 font-semibold text-gray-500 text-xs uppercase tracking-wide">Característica</th>
-                <th class="text-center px-6 py-4 font-semibold text-gray-400 text-xs uppercase tracking-wide">Refuerzo presencial</th>
-                <th class="text-center px-6 py-4 font-semibold text-[#0369A1] text-xs uppercase tracking-wide bg-blue-50/60">🦉 OTTO</th>
+                <th class="text-left px-6 py-4 font-semibold text-gray-500 text-xs uppercase tracking-wide">Alumnos en 1° a 3°</th>
+                <th class="text-center px-6 py-4 font-semibold text-[#0369A1] text-xs uppercase tracking-wide bg-blue-50/60">Por cuatrimestre</th>
               </tr>
             </thead>
             <tbody class="divide-y divide-gray-50">
               {[
-                ["Formato", "Presencial 2x/semana", "Digital, cualquier momento"],
-                ["Precio", "Mensualidad alta + matrícula", "Suscripción accesible"],
-                ["Currículo", "Matemática y lengua genéricos", "Alineado al DC de a la Provincia de Buenos Aires"],
-                ["Gamificación", "Fichas en papel", "Avatares, niveles, misiones"],
-                ["Seguimiento", "Presencial en el centro", "App para padres en tiempo real"],
-                ["Escala Argentina", "Limitada por ubicación geográfica", "Sin límite geográfico"],
-              ].map(([feature, kumon, otto]) => (
+                ["30 alumnos", "$360.000"],
+                ["50 alumnos", "$600.000"],
+                ["60 alumnos", "$720.000"],
+                ["80 alumnos", "$960.000"],
+                ["100 alumnos", "$1.200.000"],
+              ].map(([alumnos, total]) => (
                 <tr class="hover:bg-gray-50/50 transition-colors">
-                  <td class="px-6 py-4 font-medium text-gray-700">{feature}</td>
-                  <td class="px-6 py-4 text-center text-gray-400">{kumon}</td>
-                  <td class="px-6 py-4 text-center text-[#0369A1] font-semibold bg-blue-50/40">{otto}</td>
+                  <td class="px-6 py-4 font-medium text-gray-700">{alumnos}</td>
+                  <td class="px-6 py-4 text-center text-[#0369A1] font-semibold bg-blue-50/40">{total}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
+        <p class="fade-up text-center text-xs text-gray-400 mb-10">La escuela puede trasladar el valor a la cuota familiar.</p>
+
+        <!-- Escuela Fundadora + cláusula de salida -->
+        <div class="scale-in glow-card rounded-3xl border-2 border-[#0369A1] p-7 sm:p-8 relative bg-white max-w-2xl mx-auto overflow-hidden">
+          <div class="absolute top-0 right-0 w-40 h-40 bg-[#8C2CE6]/8 rounded-full blur-2xl pointer-events-none"></div>
+          <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-gradient-to-r from-[#0369A1] to-[#8C2CE6] text-white text-[10px] font-bold px-4 py-1 rounded-full tracking-widest uppercase whitespace-nowrap shadow-md shadow-[#0369A1]/30">
+            Escuela Fundadora · Precio congelado
+          </div>
+          <div class="relative space-y-5 mt-2">
+            <div class="flex items-start gap-3.5">
+              <div class="w-10 h-10 bg-gradient-to-br from-[#0369A1] to-[#1E3A8A] rounded-2xl flex items-center justify-center flex-shrink-0 mt-0.5 text-lg shadow-md shadow-[#0369A1]/25">🔒</div>
+              <div>
+                <p class="font-bold text-gray-900 text-sm mb-1">Precio congelado de por vida</p>
+                <p class="text-sm text-gray-500 leading-relaxed">Las primeras escuelas de cada zona congelan este precio en todas las renovaciones futuras. No es un descuento de lanzamiento: es precio congelado. En un país con la inflación que tenemos, esto vale más que cualquier rebaja.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3.5">
+              <div class="w-10 h-10 bg-gradient-to-br from-[#10B981] to-[#059669] rounded-2xl flex items-center justify-center flex-shrink-0 mt-0.5 text-lg shadow-md shadow-[#10B981]/25">🛡️</div>
+              <div>
+                <p class="font-bold text-gray-900 text-sm mb-1">Cláusula de salida</p>
+                <p class="text-sm text-gray-500 leading-relaxed">No ofrecemos prueba gratis, porque creemos en lo que entregamos. Bajamos el riesgo de otra forma: en las primeras 3 semanas de agosto, si tu equipo docente siente que OTTO no entrega lo acordado, la escuela cancela sin cargo ni penalidad.</p>
+              </div>
+            </div>
+          </div>
+          <a href={WA_FUNDADORA}
+            class="btn-primary group relative mt-7 w-full flex items-center justify-center gap-2 py-3.5 bg-[#0369A1] text-white font-bold rounded-2xl shadow-lg shadow-[#0369A1]/25 hover:-translate-y-0.5 hover:shadow-xl transition-all duration-300 text-sm">
+            Reservá tu lugar como Escuela Fundadora
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+          </a>
+        </div>
       </div>
     </section>
 
-    <!-- ===== CTA FINAL ===== -->
-    <section class="py-20 bg-[#1E3A8A] relative overflow-hidden">
-      <div class="absolute inset-0 pointer-events-none">
-        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-[#0369A1]/25 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4"></div>
-        <div class="absolute bottom-0 left-0 w-80 h-80 bg-[#8C2CE6]/15 rounded-full blur-3xl translate-y-1/3 -translate-x-1/4"></div>
+    <!-- ===== POR QUÉ AHORA — las 3 fuerzas de mercado (why-now) ===== -->
+    <section class="py-11 md:py-14 section-alt">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-7">
+          <span class="fade-up eyebrow-line inline-block px-3.5 py-1 bg-[#8C2CE6]/10 text-[#8C2CE6] text-xs font-bold rounded-full mb-4 tracking-widest uppercase">
+            Por qué ahora
+          </span>
+          <h2 class="fade-up text-2xl sm:text-[2rem] font-extrabold text-gray-900 tracking-tight mb-2">
+            Por qué este es el momento, y no el año que viene
+          </h2>
+          <p class="fade-up text-gray-500 text-base max-w-2xl mx-auto">La decisión de agosto se toma en junio. Las escuelas que firman ahora capacitan a sus docentes en julio y arrancan con la plataforma viva el 1° de agosto.</p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-5 mb-8">
+          {[
+            { num: "01", from: "#0369A1", to: "#1E3A8A", title: "La competencia por la matrícula", desc: "Las familias eligen colegio comparando qué ofrece cada uno. Hoy podés tener un argumento que el de la otra cuadra todavía no tiene." },
+            { num: "02", from: "#8C2CE6", to: "#6d28d9", title: "La crisis de lectoescritura", desc: "Los diagnósticos de primer ciclo encienden alarmas en todo el país. Las familias lo sienten y por eso pagan particular. Podés responder a eso desde adentro." },
+            { num: "03", from: "#0ea5e9", to: "#0369A1", title: "La tecnología ya está lista", desc: "Contenido interactivo, gamificado y con seguimiento, alineado al currículo bonaerense. La ventana para ser de los primeros se está cerrando." },
+          ].map(({ num, from, to, title, desc }, i) => (
+            <div class={`fade-up delay-${i + 1} group bg-white rounded-3xl border border-gray-100 p-7 lift relative overflow-hidden`}>
+              <div class="absolute -right-3 -top-3 text-7xl font-black tracking-tighter select-none" style={`background: linear-gradient(135deg, ${from}, ${to}); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; opacity: 0.12;`}>{num}</div>
+              <div class="relative">
+                <div class="w-10 h-1.5 rounded-full mb-5" style={`background: linear-gradient(90deg, ${from}, ${to});`}></div>
+                <h3 class="font-bold text-base text-gray-900 mb-2">{title}</h3>
+                <p class="text-gray-500 leading-relaxed text-sm">{desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <!-- Calendario del año escolar — timeline -->
+        <div class="fade-up max-w-3xl mx-auto relative">
+          <div class="hidden sm:block absolute top-[14px] left-[12%] right-[12%] h-0.5 bg-gradient-to-r from-[#0369A1] via-[#8C2CE6] to-[#10B981]"></div>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-3 relative">
+            {[
+              { when: "Junio", what: "Reunión y firma", color: "#0369A1" },
+              { when: "Julio", what: "Onboarding docente, sin costo", color: "#8C2CE6" },
+              { when: "1° de agosto", what: "Plataforma viva", color: "#10B981" },
+              { when: "Noviembre", what: "Evaluación y renovación", color: "#0369A1" },
+            ].map(({ when, what, color }) => (
+              <div class="text-center">
+                <span class="hidden sm:flex w-7 h-7 mx-auto rounded-full items-center justify-center mb-3 ring-4 ring-[#f8faff]" style={`background:${color};`}>
+                  <span class="w-2 h-2 rounded-full bg-white"></span>
+                </span>
+                <div class="bg-white rounded-2xl border border-gray-100 p-4 shadow-sm lift">
+                  <p class="text-xs font-bold uppercase tracking-widest mb-1" style={`color: ${color};`}>{when}</p>
+                  <p class="text-xs text-gray-500 leading-snug">{what}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
-      <div class="relative max-w-3xl mx-auto px-4 sm:px-6 text-center">
-        <span class="fade-up inline-block px-3.5 py-1 bg-white/10 text-white/70 text-xs font-semibold rounded-full mb-5 tracking-wide uppercase">
-          Probalo sin costo
-        </span>
-        <h2 class="fade-up text-3xl sm:text-4xl font-extrabold text-white mb-4 leading-[1.1] tracking-tight">
-          El refuerzo escolar de tu hijo empieza hoy
-        </h2>
-        <p class="fade-up text-blue-200 text-base mb-8 max-w-xl mx-auto leading-relaxed">
-          Contenido 100% alineado al Diseño Curricular de Buenos Aires. Sin clases particulares, sin turnos, sin traslados.
-        </p>
-        <div class="fade-up flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <a href="https://app.ottoedu.com.ar/register"
-            class="flex items-center gap-3 px-8 py-4 bg-white text-[#1E3A8A] font-bold rounded-2xl text-base hover:shadow-2xl hover:scale-[1.02] transition-all">
-            <svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-              <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-              <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
-              <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
-            </svg>
-            Continuar con Google
-          </a>
-          <a href="https://app.ottoedu.com.ar/login"
-            class="text-white/60 hover:text-white text-sm font-medium transition-colors">
-            Ya tengo cuenta — Iniciar sesión
+    </section>
+
+    <!-- ===== VS CLASSROOM / CONTINUEMOS ESTUDIANDO ===== -->
+    <section class="py-11 md:py-14 bg-white">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-8">
+          <span class="fade-up eyebrow-line inline-block px-3.5 py-1 bg-gray-100 text-gray-500 text-xs font-bold rounded-full mb-4 tracking-widest uppercase">
+            Comparación honesta
+          </span>
+          <h2 class="fade-up text-2xl sm:text-[2rem] font-extrabold text-gray-900 tracking-tight mb-3 leading-tight">
+            ¿Ya usás Google Classroom o Continuemos Estudiando?
+          </h2>
+          <p class="fade-up text-gray-500 text-base max-w-2xl mx-auto">Classroom es un pizarrón vacío: el docente arma todo. Continuemos da textos largos y estáticos, sin interactividad ni seguimiento. OTTO trae el contenido de primer ciclo ya adentro.</p>
+        </div>
+        <div class="fade-up overflow-hidden rounded-3xl border border-gray-100 shadow-xl shadow-gray-200/60">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="bg-gray-50/80 border-b border-gray-100">
+                <th class="text-left px-5 sm:px-6 py-4 font-semibold text-gray-500 text-xs uppercase tracking-wide">Característica</th>
+                <th class="text-center px-5 sm:px-6 py-4 font-semibold text-gray-400 text-xs uppercase tracking-wide">Classroom / Continuemos</th>
+                <th class="text-center px-5 sm:px-6 py-4 font-bold text-white text-xs uppercase tracking-wide bg-gradient-to-r from-[#0369A1] to-[#1E3A8A]">🦉 OTTO</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-50">
+              {[
+                ["Contenido", "Vacío / textos estáticos", "Actividades listas para primer ciclo"],
+                ["Alineación", "Genérica o de gobierno", "Diseño Curricular DGCyE"],
+                ["Interactividad", "Ninguna", "9 tipos de actividad gamificada"],
+                ["Trabajo del docente", "Arma y adapta todo", "Elige y asigna en 1 clic"],
+                ["Seguimiento", "Manual o inexistente", "Progreso por curso y por alumno"],
+                ["Lectoescritura", "No tiene módulo", "Módulo dedicado de primer ciclo"],
+              ].map(([feature, otros, otto]) => (
+                <tr class="hover:bg-blue-50/30 transition-colors">
+                  <td class="px-5 sm:px-6 py-4 font-semibold text-gray-700">{feature}</td>
+                  <td class="px-5 sm:px-6 py-4 text-center text-gray-400">{otros}</td>
+                  <td class="px-5 sm:px-6 py-4 text-[#1E3A8A] font-semibold bg-blue-50/40">
+                    <span class="flex items-center justify-center gap-2">
+                      <svg class="w-4 h-4 text-[#10B981] flex-shrink-0" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                      <span class="text-left">{otto}</span>
+                    </span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div class="fade-up text-center mt-8">
+          <a href={WA}
+            class="group inline-flex items-center gap-2 text-sm font-bold text-[#0369A1] hover:text-[#8C2CE6] transition-colors">
+            Tengo dudas, charlemos
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 bounce-arrow" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
           </a>
         </div>
-        <p class="fade-up text-blue-300/50 text-xs mt-6">Sin tarjeta de crédito · Cancelás cuando querés.</p>
+      </div>
+    </section>
+
+    <!-- ===== FAQ — lo que va a preguntar la comisión directiva ===== -->
+    <section class="py-11 md:py-14 section-alt">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-7">
+          <span class="fade-up eyebrow-line inline-block px-3.5 py-1 bg-[#0369A1]/8 text-[#0369A1] text-xs font-bold rounded-full mb-4 tracking-widest uppercase">
+            Preparate para la comisión
+          </span>
+          <h2 class="fade-up text-2xl sm:text-[2rem] font-extrabold text-gray-900 tracking-tight">
+            Lo que seguro te va a preguntar la comisión
+          </h2>
+        </div>
+        <div class="space-y-3">
+          {[
+            { q: "¿Qué pasa con los datos de los chicos?", a: "Los administra la escuela, no se comparten con terceros y queda asentado en el contrato." },
+            { q: "¿Esto le suma trabajo a las maestras?", a: "No. Eligen y asignan; el contenido ya está hecho. Se aprende a usar en 10 minutos." },
+            { q: "Ya usamos Google Classroom.", a: "Perfecto, porque OTTO se usa igual, pero con el contenido de primer ciclo ya adentro. Reemplaza el pizarrón vacío." },
+            { q: "Tuvimos una plataforma que nadie usó.", a: "Esas mueren cuando la docente tiene que armar todo. Acá no arma nada: por eso se usa." },
+            { q: "¿Por qué pagar si hay cosas gratis?", a: "Lo gratis es suelto, sin orden ni seguimiento. OTTO reemplaza lo que las familias ya pagan por fuera, ordenado y medible." },
+            { q: "¿Y el contenido de 2° y 3°?", a: "1° está completo y validado, 2° casi terminado, 3° en desarrollo. Te lo decimos de frente." },
+            { q: "Tengo que llevarlo a la comisión directiva.", a: "Perfecto. Te dejo todo por escrito —precio, alcance y cláusula de salida— para que lo presentes. ¿Qué día se reúnen?" },
+          ].map(({ q, a }, i) => (
+            <details class={`faq-item fade-up delay-${(i % 5) + 1} group bg-white rounded-2xl border border-gray-100 hover:border-[#0369A1]/30 transition-colors overflow-hidden`}>
+              <summary class="flex items-center justify-between gap-4 cursor-pointer list-none px-5 py-4">
+                <span class="font-bold text-gray-900 text-sm">{q}</span>
+                <span class="w-7 h-7 rounded-full bg-[#0369A1]/8 flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-open:rotate-45">
+                  <svg class="w-3.5 h-3.5 text-[#0369A1]" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd"/></svg>
+                </span>
+              </summary>
+              <p class="px-5 pb-4 -mt-1 text-sm text-gray-500 leading-relaxed">{a}</p>
+            </details>
+          ))}
+        </div>
+        <div class="fade-up text-center mt-10">
+          <a href={WA_COMISION}
+            class="btn-primary group inline-flex items-center gap-2 px-7 py-3.5 bg-[#0369A1] text-white font-bold rounded-2xl shadow-lg shadow-[#0369A1]/25 hover:-translate-y-0.5 hover:shadow-xl transition-all duration-300 text-base">
+            Pedí el material para presentar a la comisión
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 transition-transform group-hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CTA FINAL — cierre con fecha ===== -->
+    <section class="py-14 md:py-20 relative overflow-hidden bg-gradient-to-br from-[#1E3A8A] via-[#0369A1] to-[#1E3A8A]">
+      <div class="absolute inset-0 dot-grid-light opacity-50 pointer-events-none"></div>
+      <div class="absolute inset-0 pointer-events-none">
+        <div class="float-blob absolute top-0 right-0 w-[520px] h-[520px] bg-[#0ea5e9]/25 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4"></div>
+        <div class="float-blob-slow absolute bottom-0 left-0 w-96 h-96 bg-[#8C2CE6]/25 rounded-full blur-3xl translate-y-1/3 -translate-x-1/4"></div>
+      </div>
+      <div class="relative max-w-3xl mx-auto px-4 sm:px-6 text-center">
+        <div class="fade-up flex justify-center mb-5">
+          <div class="w-16 h-16 rounded-2xl bg-white/10 backdrop-blur ring-1 ring-white/20 flex items-center justify-center">
+            <img src="/pet.png" alt="OTTO" class="w-11 h-11 object-contain breathe" onerror="this.style.display='none'" />
+          </div>
+        </div>
+        <span class="fade-up inline-block px-3.5 py-1 bg-white/10 backdrop-blur text-white/80 text-xs font-bold rounded-full mb-5 tracking-widest uppercase ring-1 ring-white/15">
+          Cupos por zona · Ciclo 2026
+        </span>
+        <h2 class="fade-up text-3xl sm:text-[2.6rem] font-extrabold text-white mb-4 leading-[1.08] tracking-tight">
+          El próximo paso es una reunión de 20 minutos
+        </h2>
+        <p class="fade-up text-blue-100 text-base mb-9 max-w-xl mx-auto leading-relaxed">
+          En junio nos reunimos y, si hay acuerdo, firmamos. En julio capacitamos a tu equipo en una sola sesión, sin costo extra. El 1° de agosto OTTO está funcionando en tu escuela. Estamos eligiendo pocas escuelas por zona para este arranque: si la tuya encaja, agendemos.
+        </p>
+        <div class="fade-up flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <a href={WA_DEMO}
+            class="btn-primary group flex items-center gap-3 px-8 py-4 bg-white text-[#1E3A8A] font-bold rounded-2xl text-base shadow-2xl shadow-black/20 hover:scale-[1.03] hover:-translate-y-0.5 transition-all duration-300">
+            <svg class="w-5 h-5 flex-shrink-0 text-[#25D366]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            Agendá tu demo por WhatsApp
+          </a>
+          <a href={MAIL}
+            class="group flex items-center gap-2.5 px-7 py-4 bg-white/10 backdrop-blur ring-1 ring-white/25 text-white font-semibold rounded-2xl text-base hover:bg-white/20 hover:-translate-y-0.5 transition-all duration-300">
+            <svg class="w-5 h-5 flex-shrink-0 text-white/80 group-hover:text-white transition-colors" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+              <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+            </svg>
+            Escribinos un email
+          </a>
+        </div>
+        <p class="fade-up text-blue-200/60 text-xs mt-6">Te dejamos todo por escrito para tu comisión directiva.</p>
       </div>
     </section>
 
     <!-- ===== FOOTER ===== -->
-    <footer class="bg-gray-900 text-gray-300 py-10">
+    <footer class="relative bg-gray-950 text-gray-300 py-9 md:py-11">
+      <div class="absolute top-0 inset-x-0 h-0.5 bg-gradient-to-r from-[#0369A1] via-[#8C2CE6] to-[#10B981]"></div>
       <div class="max-w-6xl mx-auto px-4 sm:px-6">
         <div class="grid md:grid-cols-4 gap-8 mb-8">
           <div>
-            <div class="flex items-center gap-2 mb-4">
-              <img src="/pet.png" alt="OTTO mascota" class="w-10 h-10 rounded-full object-cover" onerror="this.style.display='none'" />
+            <div class="flex items-center gap-2.5 mb-4">
+              <img src="/pet.png" alt="OTTO mascota" class="w-11 h-11 rounded-2xl object-cover ring-1 ring-white/10" onerror="this.style.display='none'" />
               <div>
                 <p class="font-bold text-white text-lg">OTTO</p>
-                <p class="text-xs text-gray-400">Nivel Primario • Provincia de Buenos Aires</p>
+                <p class="text-xs text-gray-400">Para escuelas primarias • Provincia de Buenos Aires</p>
               </div>
             </div>
             <p class="text-sm text-gray-400 leading-relaxed">
-              Plataforma de refuerzo escolar digital para 1° a 3° grado. Contenido 100% alineado al Diseño Curricular oficial de la Provincia de Buenos Aires.
+              Plataforma web de refuerzo escolar para 1° a 3° grado, alineada al Diseño Curricular de la DGCyE. Licencia institucional para escuelas privadas de la Provincia de Buenos Aires.
             </p>
           </div>
           <div>
-            <h4 class="font-semibold text-white mb-4">Plataforma</h4>
+            <h4 class="font-semibold text-white mb-4">Para escuelas</h4>
             <ul class="space-y-2 text-sm">
-              <li><a href="https://app.ottoedu.com.ar/login" class="hover:text-white transition-colors">Iniciar Sesión</a></li>
-              <li><a href="https://app.ottoedu.com.ar/register" class="hover:text-white transition-colors">Crear cuenta gratis</a></li>
+              <li><a href={WA} class="hover:text-white transition-colors">Agendá una demo</a></li>
+              <li><a href={MAIL} class="hover:text-white transition-colors">contacto@ottoedu.com.ar</a></li>
             </ul>
           </div>
           <div>
             <h4 class="font-semibold text-white mb-4">Contacto</h4>
             <ul class="space-y-2 text-sm">
               <li>
-                <a href="https://wa.me/17865575398" target="_blank" rel="noopener noreferrer" aria-label="Contactar a OTTO por WhatsApp" class="inline-flex items-center gap-2 hover:text-white transition-colors">
+                <a href="https://wa.me/5493329325672" target="_blank" rel="noopener noreferrer" aria-label="Contactar a OTTO por WhatsApp" class="inline-flex items-center gap-2 hover:text-white transition-colors">
                   <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                   </svg>
                   WhatsApp
+                </a>
+              </li>
+              <li>
+                <a href={MAIL} class="inline-flex items-center gap-2 hover:text-white transition-colors">
+                  <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+                  </svg>
+                  contacto@ottoedu.com.ar
                 </a>
               </li>
               <li>
@@ -649,6 +1023,32 @@ import '../styles/global.css';
       // Hero elements entran al cargar (no necesitan scroll)
       document.querySelectorAll('section:first-of-type .fade-up, section:first-of-type .fade-in').forEach((el) => {
         setTimeout(() => el.classList.add('visible'), 100);
+      });
+
+      // Navbar: sombra + fondo sólido al hacer scroll
+      const header = document.getElementById('site-header');
+      if (header) {
+        const onScroll = () => {
+          if (window.scrollY > 8) {
+            header.classList.add('shadow-md', 'shadow-gray-200/40', 'border-gray-100/80', 'bg-white/90');
+            header.classList.remove('border-transparent');
+          } else {
+            header.classList.remove('shadow-md', 'shadow-gray-200/40', 'border-gray-100/80', 'bg-white/90');
+            header.classList.add('border-transparent');
+          }
+        };
+        onScroll();
+        window.addEventListener('scroll', onScroll, { passive: true });
+      }
+
+      // Cerrar otras FAQ al abrir una (comportamiento acordeón)
+      const faqItems = Array.from(document.querySelectorAll('.faq-item'));
+      faqItems.forEach((item) => {
+        item.addEventListener('toggle', () => {
+          if (item.open) {
+            faqItems.forEach((other) => { if (other !== item) other.open = false; });
+          }
+        });
       });
     </script>
 
