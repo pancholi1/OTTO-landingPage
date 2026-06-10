@@ -6,7 +6,6 @@ const WA = "https://wa.me/5493329325672";
 const WA_DEMO = "https://wa.me/5493329325672?text=Hola,%20soy%20director/a%20de%20una%20escuela%20y%20quiero%20agendar%20una%20demo%20de%20OTTO";
 const WA_FAMILIAS = "https://wa.me/5493329325672?text=Hola,%20soy%20director/a%20y%20quiero%20ver%20c%C3%B3mo%20funciona%20OTTO%20en%20mi%20escuela";
 const WA_DOCENTE = "https://wa.me/5493329325672?text=Hola,%20quiero%20ver%20la%20vista%20del%20docente%20de%20OTTO";
-const WA_FUNDADORA = "https://wa.me/5493329325672?text=Hola,%20me%20interesa%20el%20beneficio%20Escuela%20Fundadora%20de%20OTTO";
 const WA_COMISION = "https://wa.me/5493329325672?text=Hola,%20quiero%20el%20material%20de%20OTTO%20para%20presentar%20a%20la%20comisi%C3%B3n%20directiva";
 const MAIL = "mailto:contacto@ottoedu.com.ar";
 // Abre el compositor de Gmail en una pestaña nueva (no depende del cliente de correo del SO)
@@ -86,7 +85,7 @@ const LOGIN = "https://app.ottoedu.com.ar/login";
         position: absolute;
         top: 52%;
         left: 0;
-        height: 4px;
+        height: 3px;
         background: #EF4444;
         width: 0;
         transition: width 0.7s cubic-bezier(0.16,1,0.3,1) 0.5s;
@@ -334,14 +333,14 @@ const LOGIN = "https://app.ottoedu.com.ar/login";
     </header>
 
     <!-- ===== HERO — Mensaje principal: la sustitución del gasto familiar ===== -->
-    <section class="hero-bg relative overflow-hidden pt-9 pb-12 md:pt-10 md:pb-14">
+    <section class="hero-bg relative overflow-hidden pt-7 pb-10 md:pt-9 md:pb-12 lg:py-[clamp(2rem,4vh,3.5rem)]">
       <!-- Decorative elements -->
       <div class="absolute inset-0 dot-grid pointer-events-none"></div>
       <div class="float-blob absolute top-0 right-0 w-[620px] h-[620px] bg-[#0369A1]/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4 pointer-events-none"></div>
       <div class="float-blob-slow absolute bottom-0 left-0 w-96 h-96 bg-[#8C2CE6]/10 rounded-full blur-3xl translate-y-1/3 -translate-x-1/4 pointer-events-none"></div>
       <div class="float-blob absolute top-1/3 left-1/2 w-72 h-72 bg-[#10B981]/8 rounded-full blur-3xl pointer-events-none"></div>
 
-      <div class="relative max-w-6xl mx-auto px-4 sm:px-6 grid md:grid-cols-2 gap-8 lg:gap-10 items-center">
+      <div class="relative max-w-6xl mx-auto px-4 sm:px-6 grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
         <!-- Texto -->
         <div>
           <span class="fade-up inline-flex items-center gap-2 px-3.5 py-1.5 bg-white/90 backdrop-blur rounded-full border border-[#0369A1]/15 text-xs font-semibold text-[#1E3A8A] mb-5 shadow-sm shadow-[#0369A1]/5">
@@ -349,42 +348,42 @@ const LOGIN = "https://app.ottoedu.com.ar/login";
             Seleccionamos pocas escuelas por zona · Ciclo 2026
           </span>
 
-          <h1 class="fade-up delay-1 text-2xl sm:text-3xl lg:text-[2.4rem] font-extrabold text-gray-900 leading-[1.1] tracking-tight mb-2.5">
+          <h1 class="fade-up delay-1 text-[clamp(1.6rem,1.1rem+1.7vw,2.4rem)] font-extrabold text-gray-900 leading-[1.12] tracking-tight mb-2.5">
             Las familias de tu escuela ya pagan
             <span class="text-[#EF4444] strike-line" id="strike-target">$80.000–$150.000 por mes</span> en particulares.
           </h1>
-          <h2 class="fade-up delay-2 text-xl sm:text-2xl font-extrabold leading-snug mb-4">
-            <span class="text-gradient">OTTO lo trae adentro de la escuela</span>, por $3.000 por alumno al mes.
+          <h2 class="fade-up delay-2 text-[clamp(1.15rem,0.9rem+1vw,1.5rem)] font-extrabold leading-snug mb-3.5">
+            <span class="text-gradient">OTTO lo trae adentro de la escuela</span>, por una fracción de lo que ya pagan.
           </h2>
 
-          <p class="fade-up delay-3 text-sm sm:text-base text-gray-500 leading-relaxed mb-5">
+          <p class="fade-up delay-3 text-sm sm:text-[15px] text-gray-500 leading-relaxed mb-4">
             Plataforma web de refuerzo de Matemática y Prácticas del Lenguaje para primer ciclo, <strong class="text-gray-800 font-semibold">alineada al Diseño Curricular de la DGCyE</strong>. Tus docentes eligen una actividad y la proyectan en el pizarrón o la asignan en un clic, los chicos practican jugando, y la escuela puede mostrarle a cada familia cómo avanza su hijo. Algo que ninguna otra escuela de tu zona ofrece todavía.
           </p>
 
           <!-- Stats -->
-          <div class="fade-up delay-4 grid grid-cols-3 gap-3 mb-5">
+          <div class="fade-up delay-4 grid grid-cols-3 gap-2.5 mb-4">
             {[
-              { v: "$3.000", l: "Por alumno al mes" },
+              { v: "1° a 3°", l: "Refuerzo de primer ciclo" },
               { v: "9", l: "Tipos de actividad interactiva" },
               { v: "DGCyE", l: "Alineado al Diseño Curricular" },
             ].map(({ v, l }) => (
-              <div class="rounded-2xl bg-white/70 backdrop-blur border border-white/80 shadow-sm px-4 py-3 lift">
-                <p class="text-xl sm:text-2xl font-extrabold text-gradient tracking-tight">{v}</p>
-                <p class="text-[11px] text-gray-500 mt-1 leading-snug">{l}</p>
+              <div class="rounded-2xl bg-white/70 backdrop-blur border border-white/80 shadow-sm px-3.5 py-2.5 lift">
+                <p class="text-lg sm:text-xl font-extrabold text-gradient tracking-tight">{v}</p>
+                <p class="text-[11px] text-gray-500 mt-0.5 leading-snug">{l}</p>
               </div>
             ))}
           </div>
 
           <div class="fade-up delay-5 flex flex-col sm:flex-row gap-3">
             <a href={WA_DEMO}
-              class="btn-primary group flex items-center justify-center gap-2 px-7 py-3.5 bg-[#0369A1] text-white font-bold rounded-2xl shadow-lg shadow-[#0369A1]/25 hover:shadow-xl hover:shadow-[#0369A1]/30 hover:-translate-y-0.5 transition-all duration-300 text-base">
+              class="btn-primary group flex items-center justify-center gap-2 px-6 py-3 bg-[#0369A1] text-white font-bold rounded-2xl shadow-lg shadow-[#0369A1]/25 hover:shadow-xl hover:shadow-[#0369A1]/30 hover:-translate-y-0.5 transition-all duration-300 text-[15px]">
               Agendá una demo
               <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 transition-transform group-hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
               </svg>
             </a>
             <a href={MAIL_GMAIL} target="_blank" rel="noopener noreferrer"
-              class="group flex items-center justify-center gap-2 px-7 py-3.5 border border-gray-300 bg-white/60 backdrop-blur text-gray-700 font-semibold rounded-2xl hover:bg-white hover:border-[#0369A1]/40 hover:text-[#0369A1] transition-all duration-300 text-base">
+              class="group flex items-center justify-center gap-2 px-6 py-3 border border-gray-300 bg-white/60 backdrop-blur text-gray-700 font-semibold rounded-2xl hover:bg-white hover:border-[#0369A1]/40 hover:text-[#0369A1] transition-all duration-300 text-[15px]">
               <svg class="w-4 h-4 text-gray-400 group-hover:text-[#0369A1] transition-colors" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                 <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
                 <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
@@ -480,7 +479,7 @@ const LOGIN = "https://app.ottoedu.com.ar/login";
             Hoy las familias de tu escuela ya pagan refuerzo. Por fuera, y desordenado.
           </h2>
           <p class="fade-up text-gray-500 text-base max-w-2xl mx-auto leading-relaxed">
-            No es un gasto nuevo. Una familia de primer ciclo gasta entre $80.000 y $150.000 por mes en clases particulares, por un solo chico, sin coordinación con la maestra. OTTO hace ese mismo refuerzo adentro de la escuela, para todos los chicos a la vez, alineado a lo que enseñás, por $3.000 por alumno al mes. La escuela puede sumarlo a la cuota: es sustitución de lo que la familia ya gasta, no un costo extra.
+            No es un gasto nuevo. Una familia de primer ciclo gasta entre $80.000 y $150.000 por mes en clases particulares, por un solo chico, sin coordinación con la maestra. OTTO hace ese mismo refuerzo adentro de la escuela, para todos los chicos a la vez, alineado a lo que enseñás, por una fracción de eso por alumno. La escuela puede sumarlo a la cuota: es sustitución de lo que la familia ya gasta, no un costo extra.
           </p>
         </div>
 
@@ -522,7 +521,7 @@ const LOGIN = "https://app.ottoedu.com.ar/login";
             </div>
             <ul class="space-y-3.5">
               {[
-                "$3.000 por alumno al mes — se puede pasar a la cuota familiar",
+                "Una fracción del gasto actual por alumno — se puede pasar a la cuota familiar",
                 "Adentro del aula, elegido y lanzado por la maestra",
                 "Alineado al Diseño Curricular DGCyE",
                 "La dirección y la familia ven el progreso de cada curso",
@@ -650,93 +649,6 @@ const LOGIN = "https://app.ottoedu.com.ar/login";
           <p class="text-sm text-gray-600 leading-relaxed">
             <strong class="text-[#1E3A8A] font-semibold">1° grado está completo y validado por docentes. 2° está casi terminado. 3° en desarrollo.</strong> Te lo decimos de frente para que la comisión sepa exactamente qué recibís en agosto y qué llega después.
           </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== PRECIO — licencia institucional + Escuela Fundadora + cláusula de salida ===== -->
-    <section class="py-11 md:py-14 section-alt">
-      <div class="max-w-3xl mx-auto px-4 sm:px-6">
-        <div class="text-center mb-8">
-          <span class="fade-up eyebrow-line inline-block px-3.5 py-1 bg-[#0369A1]/8 text-[#0369A1] text-xs font-bold rounded-full mb-4 tracking-widest uppercase">
-            Licencia institucional
-          </span>
-          <h2 class="fade-up text-2xl sm:text-[2rem] font-extrabold text-gray-900 tracking-tight mb-3">
-            <span class="text-gradient">$3.000 por alumno al mes.</span> Un solo pago.
-          </h2>
-          <p class="fade-up text-gray-500 text-base leading-relaxed max-w-xl mx-auto">
-            Licencia institucional, en pesos. Sin planes, sin letra chica. $12.000 por alumno el cuatrimestre · $24.000 el año. Un único pago, con vencimiento el 31 de julio, antes de que arranque el segundo cuatrimestre el 1° de agosto. El valor se puede trasladar a la cuota familiar.
-          </p>
-        </div>
-
-        <!-- Precios planos -->
-        <div class="fade-up grid grid-cols-3 gap-3 max-w-xl mx-auto mb-8">
-          {[
-            { price: "$3.000", unit: "por alumno / mes", feat: true },
-            { price: "$12.000", unit: "por alumno / cuatrimestre", feat: false },
-            { price: "$24.000", unit: "por alumno / año", feat: false },
-          ].map(({ price, unit, feat }) => (
-            <div class={`rounded-2xl p-5 text-center lift ${feat ? 'bg-gradient-to-br from-[#0369A1] to-[#1E3A8A] shadow-lg shadow-[#0369A1]/25' : 'border border-gray-100 bg-white shadow-sm'}`}>
-              <p class={`text-xl sm:text-2xl font-extrabold tracking-tight ${feat ? 'text-white' : 'text-[#1E3A8A]'}`}>{price}</p>
-              <p class={`text-xs mt-1 leading-snug ${feat ? 'text-blue-100' : 'text-gray-400'}`}>{unit}</p>
-            </div>
-          ))}
-        </div>
-
-        <!-- Tabla de referencia por tamaño de escuela -->
-        <div class="fade-up overflow-hidden rounded-2xl border border-gray-100 shadow-sm mb-8">
-          <table class="w-full text-sm">
-            <thead>
-              <tr class="bg-gray-50/80 border-b border-gray-100">
-                <th class="text-left px-6 py-4 font-semibold text-gray-500 text-xs uppercase tracking-wide">Alumnos en 1° a 3°</th>
-                <th class="text-center px-6 py-4 font-semibold text-[#0369A1] text-xs uppercase tracking-wide bg-blue-50/60">Por cuatrimestre</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-gray-50">
-              {[
-                ["30 alumnos", "$360.000"],
-                ["50 alumnos", "$600.000"],
-                ["60 alumnos", "$720.000"],
-                ["80 alumnos", "$960.000"],
-                ["100 alumnos", "$1.200.000"],
-              ].map(([alumnos, total]) => (
-                <tr class="hover:bg-gray-50/50 transition-colors">
-                  <td class="px-6 py-4 font-medium text-gray-700">{alumnos}</td>
-                  <td class="px-6 py-4 text-center text-[#0369A1] font-semibold bg-blue-50/40">{total}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        <p class="fade-up text-center text-xs text-gray-400 mb-10">La escuela puede trasladar el valor a la cuota familiar.</p>
-
-        <!-- Escuela Fundadora + cláusula de salida -->
-        <div class="scale-in glow-card rounded-3xl border-2 border-[#0369A1] p-7 sm:p-8 relative bg-white max-w-2xl mx-auto overflow-hidden">
-          <div class="absolute top-0 right-0 w-40 h-40 bg-[#8C2CE6]/8 rounded-full blur-2xl pointer-events-none"></div>
-          <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-gradient-to-r from-[#0369A1] to-[#8C2CE6] text-white text-[10px] font-bold px-4 py-1 rounded-full tracking-widest uppercase whitespace-nowrap shadow-md shadow-[#0369A1]/30">
-            Escuela Fundadora · Precio congelado
-          </div>
-          <div class="relative space-y-5 mt-2">
-            <div class="flex items-start gap-3.5">
-              <div class="w-10 h-10 bg-gradient-to-br from-[#0369A1] to-[#1E3A8A] rounded-2xl flex items-center justify-center flex-shrink-0 mt-0.5 text-lg shadow-md shadow-[#0369A1]/25">🔒</div>
-              <div>
-                <p class="font-bold text-gray-900 text-sm mb-1">Precio congelado de por vida</p>
-                <p class="text-sm text-gray-500 leading-relaxed">Las primeras escuelas de cada zona congelan este precio en todas las renovaciones futuras. No es un descuento de lanzamiento: es precio congelado. En un país con la inflación que tenemos, esto vale más que cualquier rebaja.</p>
-              </div>
-            </div>
-            <div class="flex items-start gap-3.5">
-              <div class="w-10 h-10 bg-gradient-to-br from-[#10B981] to-[#059669] rounded-2xl flex items-center justify-center flex-shrink-0 mt-0.5 text-lg shadow-md shadow-[#10B981]/25">🛡️</div>
-              <div>
-                <p class="font-bold text-gray-900 text-sm mb-1">Cláusula de salida</p>
-                <p class="text-sm text-gray-500 leading-relaxed">No ofrecemos prueba gratis, porque creemos en lo que entregamos. Bajamos el riesgo de otra forma: en las primeras 3 semanas de agosto, si tu equipo docente siente que OTTO no entrega lo acordado, la escuela cancela sin cargo ni penalidad.</p>
-              </div>
-            </div>
-          </div>
-          <a href={WA_FUNDADORA}
-            class="btn-primary group relative mt-7 w-full flex items-center justify-center gap-2 py-3.5 bg-[#0369A1] text-white font-bold rounded-2xl shadow-lg shadow-[#0369A1]/25 hover:-translate-y-0.5 hover:shadow-xl transition-all duration-300 text-sm">
-            Reservá tu lugar como Escuela Fundadora
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
-          </a>
         </div>
       </div>
     </section>
