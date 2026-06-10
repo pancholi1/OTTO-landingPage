@@ -820,7 +820,7 @@ const LOGIN = "https://app.ottoedu.com.ar/login";
               <tr class="bg-gray-50/80 border-b border-gray-100">
                 <th class="text-left px-5 sm:px-6 py-4 font-semibold text-gray-500 text-xs uppercase tracking-wide">Característica</th>
                 <th class="text-center px-5 sm:px-6 py-4 font-semibold text-gray-400 text-xs uppercase tracking-wide">Classroom / Continuemos</th>
-                <th class="text-center px-5 sm:px-6 py-4 font-bold text-white text-xs uppercase tracking-wide bg-gradient-to-r from-[#0369A1] to-[#1E3A8A]">🦉 OTTO</th>
+                <th class="text-center px-5 sm:px-6 py-4 font-bold text-white text-xs uppercase tracking-wide bg-gradient-to-r from-[#0369A1] to-[#1E3A8A]">OTTO</th>
               </tr>
             </thead>
             <tbody class="divide-y divide-gray-50">
@@ -863,21 +863,20 @@ const LOGIN = "https://app.ottoedu.com.ar/login";
       <div class="max-w-3xl mx-auto px-4 sm:px-6">
         <div class="text-center mb-7">
           <span class="fade-up eyebrow-dot inline-flex items-center px-4 py-1.5 bg-[#0369A1]/8 text-[#0369A1] text-xs font-bold rounded-full mb-4 tracking-widest uppercase">
-            Preparate para la comisión
+            Preguntas frecuentes
           </span>
           <h2 class="fade-up text-2xl sm:text-[2rem] font-extrabold text-gray-900 tracking-tight">
-            Lo que seguro te va a preguntar la comisión
+            Las dudas más comunes, respondidas
           </h2>
         </div>
         <div class="space-y-3">
           {[
+            { q: "¿Qué es OTTO exactamente?", a: "Una plataforma web de refuerzo escolar para 1° a 3° grado, alineada al Diseño Curricular de la DGCyE. La docente elige una actividad y la proyecta en el aula o la asigna en un clic, y los chicos practican jugando." },
+            { q: "¿Necesito instalar algo?", a: "No. Es 100% web: se usa desde el navegador, en la computadora, la tablet o el celular. No hay que instalar ni mantener nada." },
+            { q: "¿Le suma trabajo a las maestras?", a: "No. El contenido ya está hecho: la docente solo elige y asigna. Se aprende a usar en 10 minutos y la capacitación es una sola sesión, sin costo." },
             { q: "¿Qué pasa con los datos de los chicos?", a: "Los administra la escuela, no se comparten con terceros y queda asentado en el contrato." },
-            { q: "¿Esto le suma trabajo a las maestras?", a: "No. Eligen y asignan; el contenido ya está hecho. Se aprende a usar en 10 minutos." },
-            { q: "Ya usamos Google Classroom.", a: "Perfecto, porque OTTO se usa igual, pero con el contenido de primer ciclo ya adentro. Reemplaza el pizarrón vacío." },
-            { q: "Tuvimos una plataforma que nadie usó.", a: "Esas mueren cuando la docente tiene que armar todo. Acá no arma nada: por eso se usa." },
-            { q: "¿Por qué pagar si hay cosas gratis?", a: "Lo gratis es suelto, sin orden ni seguimiento. OTTO reemplaza lo que las familias ya pagan por fuera, ordenado y medible." },
-            { q: "¿Y el contenido de 2° y 3°?", a: "1° está completo y validado, 2° casi terminado, 3° en desarrollo. Te lo decimos de frente." },
-            { q: "Tengo que llevarlo a la comisión directiva.", a: "Perfecto. Te dejo todo por escrito —precio, alcance y cláusula de salida— para que lo presentes. ¿Qué día se reúnen?" },
+            { q: "Ya usamos Google Classroom, ¿sirve igual?", a: "Sí. OTTO se usa parecido, pero con el contenido de primer ciclo ya adentro: reemplaza el pizarrón vacío en el que la docente tiene que armar todo." },
+            { q: "¿Cómo arrancamos?", a: "En una reunión de 20 minutos vemos si tu escuela encaja. Si hay acuerdo, capacitamos a tu equipo en julio y el 1° de agosto OTTO está funcionando en el aula." },
           ].map(({ q, a }, i) => (
             <details class={`faq-item fade-up delay-${(i % 5) + 1} group bg-white rounded-2xl border border-gray-100 hover:border-[#0369A1]/30 transition-colors overflow-hidden`}>
               <summary class="flex items-center justify-between gap-4 cursor-pointer list-none px-5 py-4">
