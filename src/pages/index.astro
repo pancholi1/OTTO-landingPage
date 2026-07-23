@@ -458,7 +458,7 @@ const LOGIN = "https://app.ottoedu.com.ar/login";
         <div class="fade-up delay-4 flex flex-wrap justify-center gap-2.5 mb-12">
           {[
             "1° a 3° · Primer ciclo",
-            "9 tipos de actividad",
+            "12 tipos de juego",
             "Alineado a la DGCyE",
           ].map((c) => (
             <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/15 text-xs font-medium text-white/85">
@@ -710,10 +710,10 @@ const LOGIN = "https://app.ottoedu.com.ar/login";
             Lo que ninguna app global te da
           </span>
           <h2 class="fade-up text-2xl sm:text-[2rem] font-extrabold text-gray-900 tracking-tight mb-3 max-w-3xl mx-auto leading-tight">
-            Una plataforma web alineada al Diseño Curricular de la DGCyE
+            Una plataforma web y mobile alineada al Diseño Curricular de la DGCyE
           </h2>
           <p class="fade-up text-gray-500 text-base max-w-2xl mx-auto leading-relaxed">
-            Sin instalar nada. La docente asigna desde el panel de <strong class="text-[#1E3A8A] font-semibold">Clases</strong> (estilo Classroom: Alumnos, Asistencias, Tareas, Anuncios) y el chico practica jugando en Mis Misiones, Mi Clase y el mapa de Aventuras. Khan, Duolingo y ClassDojo no están alineados al currículo de la Provincia. OTTO sí, materia por materia.
+            La docente asigna desde el panel de <strong class="text-[#1E3A8A] font-semibold">Clases</strong> (estilo Classroom: Alumnos, Asistencias, Tareas, Anuncios) sin instalar nada, y el chico practica jugando en Mis Misiones, Mi Clase y el mapa de Aventuras — desde el navegador o desde la app para tablets y celulares. Khan, Duolingo y ClassDojo no están alineados al currículo de la Provincia. OTTO sí, materia por materia.
           </p>
         </div>
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -827,7 +827,7 @@ const LOGIN = "https://app.ottoedu.com.ar/login";
               {[
                 ["Contenido", "Vacío / textos estáticos", "Actividades listas para primer ciclo"],
                 ["Alineación", "Genérica o de gobierno", "Diseño Curricular DGCyE"],
-                ["Interactividad", "Ninguna", "9 tipos de actividad gamificada"],
+                ["Interactividad", "Ninguna", "12 tipos de juego gamificados"],
                 ["Trabajo del docente", "Arma y adapta todo", "Elige y asigna en 1 clic"],
                 ["Seguimiento", "Manual o inexistente", "Progreso por curso y por alumno"],
                 ["Lectoescritura", "No tiene módulo", "Módulo dedicado de primer ciclo"],
@@ -871,8 +871,8 @@ const LOGIN = "https://app.ottoedu.com.ar/login";
         </div>
         <div class="space-y-3">
           {[
-            { q: "¿Qué es OTTO exactamente?", a: "Una plataforma web de refuerzo escolar para 1° a 3° grado, alineada al Diseño Curricular de la DGCyE. La docente elige una actividad y la proyecta en el aula o la asigna en un clic, y los chicos practican jugando." },
-            { q: "¿Necesito instalar algo?", a: "No. Es 100% web: se usa desde el navegador, en la computadora, la tablet o el celular. No hay que instalar ni mantener nada." },
+            { q: "¿Qué es OTTO exactamente?", a: "Una plataforma web y mobile de refuerzo escolar para 1° a 3° grado, alineada al Diseño Curricular de la DGCyE. La docente elige una actividad y la proyecta en el aula o la asigna en un clic, y los chicos practican jugando desde el navegador o desde la app." },
+            { q: "¿Necesito instalar algo?", a: "La docente no instala nada: usa la plataforma desde el navegador. Los alumnos pueden practicar desde el navegador o con la app OTTO para tablets y celulares, disponible en App Store y Google Play." },
             { q: "¿Le suma trabajo a las maestras?", a: "No. El contenido ya está hecho: la docente solo elige y asigna. Se aprende a usar en 10 minutos y la capacitación es una sola sesión, sin costo." },
             { q: "¿Qué pasa con los datos de los chicos?", a: "Los administra la escuela, no se comparten con terceros y queda asentado en el contrato." },
             { q: "Ya usamos Google Classroom, ¿sirve igual?", a: "Sí. OTTO se usa parecido, pero con el contenido de primer ciclo ya adentro: reemplaza el pizarrón vacío en el que la docente tiene que armar todo." },
@@ -964,7 +964,7 @@ const LOGIN = "https://app.ottoedu.com.ar/login";
               </div>
             </div>
             <p class="text-sm text-gray-400 leading-relaxed">
-              Plataforma web de refuerzo escolar para 1° a 3° grado, alineada al Diseño Curricular de la DGCyE. Licencia institucional para escuelas privadas de la Provincia de Buenos Aires.
+              Plataforma web y mobile de refuerzo escolar para 1° a 3° grado, alineada al Diseño Curricular de la DGCyE. Licencia institucional para escuelas privadas de la Provincia de Buenos Aires.
             </p>
           </div>
           <div>
@@ -1069,7 +1069,7 @@ const LOGIN = "https://app.ottoedu.com.ar/login";
       }
 
       // Cerrar otras FAQ al abrir una (comportamiento acordeón)
-      const faqItems = Array.from(document.querySelectorAll('.faq-item'));
+      const faqItems = Array.from(document.querySelectorAll<HTMLDetailsElement>('.faq-item'));
       faqItems.forEach((item) => {
         item.addEventListener('toggle', () => {
           if (item.open) {
