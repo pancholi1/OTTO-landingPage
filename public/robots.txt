@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.ottoedu.com.ar/sitemap-index.xml
